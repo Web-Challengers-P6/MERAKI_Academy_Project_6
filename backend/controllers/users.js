@@ -5,9 +5,9 @@ const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 
 const createNewUser = async (req, res) => {
-  const { Username, Phone_number, password, email } = req.body;
+  const { Username, Phone_number, Password, email } = req.body;
 
-  const encryptedPassword = await bcrypt.hash(password, saltRounds);
+  const encryptedPassword = await bcrypt.hash(Password, saltRounds);
 
   const query = `INSERT INTO user (Username, Phone_number, Password, email) VALUES (?,?,?,?)`;
   const data = [Username, Phone_number, encryptedPassword, email];
