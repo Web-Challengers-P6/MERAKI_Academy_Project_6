@@ -13,3 +13,11 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
 });
+
+//Import Routes
+const usersRouter = require("./routes/users");
+const loginRouter = require("./routes/login");
+
+
+app.use("/users", usersRouter);
+app.use("/login",  loginRouter);
