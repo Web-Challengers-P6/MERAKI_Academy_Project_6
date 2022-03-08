@@ -19,3 +19,4 @@ const getAllInformation = (req, res) => {
   });
 };
 module.exports = getAllInformation;
+//done
