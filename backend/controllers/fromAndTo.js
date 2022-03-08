@@ -37,3 +37,5 @@ const to = (req, res) => {
       }
     });
   };
+
+  module.exports = { from, to };
