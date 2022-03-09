@@ -5,3 +5,5 @@ const fromAndToFilterRouter = express.Router();
 
 fromAndToFilterRouter.get("/from", fromPoint);
 fromAndToFilterRouter.get("to", to);
+
+module.exports = { fromAndToFilterRouter };
