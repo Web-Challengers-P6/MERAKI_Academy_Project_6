@@ -47,4 +47,66 @@ const Register = () => {
       };
     
       // =================================================================
+  // =================================================================
+
+  return (
+    <>
+      <div className="Form">
+        {!state.isLoggedIn ? (
+          <>
+            <p className="Title">Register:</p>
+            <form onSubmit={addNewUser}>
+              <br />
+              <input
+                type="text"
+                placeholder="First Name"
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <br />
+              <input
+                type="text"
+                placeholder="Last Name"
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <br />
+              <input
+                type="number"
+                placeholder="Age"
+                onChange={(e) => setAge(e.target.value)}
+              />
+              <br />
+              <input
+                type="text"
+                placeholder="Country"
+                onChange={(e) => setCountry(e.target.value)}
+              />
+              <br />
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <br />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <br />
+              <button>Register</button>
+              <br />
+            </form>
+            {status
+              ? message && <div className="SuccessMessage">{message}</div>
+              : message && <div className="ErrorMessage">{message}</div>}
+          </>
+        ) : (
+          <p>Logout First</p>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default Register;
     
