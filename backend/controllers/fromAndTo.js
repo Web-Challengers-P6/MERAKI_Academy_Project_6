@@ -1,10 +1,13 @@
 const db = require("../database/db");
 const Connection = require("../database/db");
 const fromAndTo = (req, res) => {
-  const fromPoint = req.body;
-  const query = `select * from trip where TRIPfrom=?`;
-  const data = [fromPoint];
+  const fromPoint = req.body.TRIPfrom;
+  const toPoint = req.body.TRIPto;
+
+  const query = `select * from trip where TRIPfrom=? and TRIPto=? `;
+  const data = [fromPoint, toPoint];
   Connection.query(query, data, (err, result) => {
+    console.log(result);
     if (err) {
       console.log(err);
       res
@@ -13,7 +16,7 @@ const fromAndTo = (req, res) => {
     } else {
       res.status(200).json({
         success: true,
-        message: "{from} Point Info",
+        message: "all trips found",
         result: result,
       });
     }
@@ -41,4 +44,4 @@ const to = (req, res) => {
   });
 };
 
-module.exports = { from, to };
+module.exports = { fromAndTo, to };
