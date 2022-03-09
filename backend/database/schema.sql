@@ -1,5 +1,7 @@
-CREATE DATABASE project6 ;
-USE  project6;
+
+CREATE DATABASE PROJECT6 ;
+USE  PROJECT6;
+
 
 create table user (
 id INT AUTO_INCREMENT NOT NULL,
@@ -29,10 +31,10 @@ Primary Key (id)
 create table rider (
 id INT AUTO_INCREMENT NOT NULL,
 riderid INT,
-driverId INT,
+tripid INT,
 softDelete INT DEFAULT 0,
 FOREIGN KEY (riderid) REFERENCES user(id),
-FOREIGN KEY (driverId) REFERENCES trip(driverId),
+FOREIGN KEY (tripid) REFERENCES trip(id),
 Primary Key (id)
 
 );
