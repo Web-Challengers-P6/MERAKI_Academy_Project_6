@@ -1,7 +1,7 @@
 const db = require("../database/db");
-
+const Connection = require("../database/db");
 const getAllInformation = (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.userId;
   const query = `select Username ,email,Phone_number,profileImg from user where id=${userId}`;
   Connection.query(query, (err, result) => {
     if (err) {
@@ -20,3 +20,4 @@ const getAllInformation = (req, res) => {
 };
 module.exports = getAllInformation;
 //done
+
