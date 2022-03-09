@@ -10,9 +10,9 @@ app.use(express.json());
 
 const PORT = 5000;
 //Import Routers
-const profileRouter = require("./routes/profileR");
-const fromAndToFilterRouter = require("./routes/fromAndtoR");
-const searchRouter = require("./routes/searchR");
+const { profileRouter } = require("./routes/profileR");
+const { fromAndToFilterRouter } = require("./routes/fromAndtoR");
+const { searchRouter } = require("./routes/searchR");
 
 //Routes Middleware
 app.use("/profile", profileRouter);

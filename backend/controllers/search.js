@@ -1,4 +1,3 @@
-search;
 
 const connection = require("../database/db");
 const db = require("../database/db");
