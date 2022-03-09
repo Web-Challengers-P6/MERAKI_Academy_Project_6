@@ -56,4 +56,35 @@ const Login = () => {
       }, [state.isLoggedIn]);
     
       //===============================================================
+      return (
+        <>
+          <div className="Form">
+            <p className="Title">Login:</p>
+            <form onSubmit={loginUser}>
+              <br />
+    
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <br />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <br />
+              <button>Login</button>
+            </form>
+    
+            {status
+              ? message && <div className="SuccessMessage">{message}</div>
+              : message && <div className="ErrorMessage">{message}</div>}
+          </div>
+        </>
+      );
+    };
+    
+    export default Login;
     
