@@ -1,5 +1,7 @@
+
 CREATE DATABASE PROJECT6 ;
 USE  PROJECT6;
+
 
 create table user (
 id INT AUTO_INCREMENT NOT NULL,
