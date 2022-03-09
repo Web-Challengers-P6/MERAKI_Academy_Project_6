@@ -15,20 +15,18 @@ app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/login", login);
 
-
 const PORT = 5000;
 //Import Routers
 const { profileRouter } = require("./routes/profileR");
 const { fromAndToFilterRouter } = require("./routes/fromAndtoR");
 const { searchRouter } = require("./routes/searchR");
-
+const { tripRouter } = require("./routes/tripR");
 //Routes Middleware
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 app.use("/filter", fromAndToFilterRouter);
+app.use("/trip", tripRouter);
 
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
 });
-
-
