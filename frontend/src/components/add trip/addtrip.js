@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { addProducts } from "../reducers/products/index";
-import {Image, Video, Transformation} from 'cloudinary-react';
-// import { AuthContext } from "./context";
+import { addTrips } from "../";///MERAKI_Academy/Projects/Project 6/MERAKI_Academy_Project_6/frontend/src/reducers/trips/index
+
+
 
 //===============================================================
 
@@ -46,7 +46,7 @@ const NewTrip = () => {
         Price
       };
       const result = await axios.post(
-        "http://localhost:5000/product",
+        "http://localhost:5000/createNewTrip",
         {
         tripName,
         TRIPfrom,
@@ -63,7 +63,7 @@ const NewTrip = () => {
       if (result.data.success) {
         setStatus(true);
         dispatch(
-          addTrip({
+          addTrips({
             tripName,
             TRIPfrom,
             TRIPto,
@@ -71,7 +71,7 @@ const NewTrip = () => {
             Price
           })
         );
-        setMessage("The product has been created successfully");
+        setMessage("The trip has been created successfully");
       }
     } catch (error) {
       if (!error.response.data.success) {
