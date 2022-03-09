@@ -6,10 +6,15 @@ const db = require("./database/db");
 
 //=======================================
 const usersRouter = require("./routes/users");
+const login = require("./routes/login");
 
 app.use(cors());
 
 app.use(express.json());
+// router middleware
+app.use("/users", usersRouter);
+app.use("/login", login);
+
 
 const PORT = 5000;
 
