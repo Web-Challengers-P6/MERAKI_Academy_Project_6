@@ -7,4 +7,4 @@ const tripRouter = express.Router();
 tripRouter.get("/all", getAllTrip);
 tripRouter.post("/createNewTrip", creatNewTrip);
 
-
+module.exports = { tripRouter };
