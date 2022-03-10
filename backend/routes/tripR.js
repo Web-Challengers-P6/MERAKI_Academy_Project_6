@@ -9,4 +9,6 @@ const tripRouter = express.Router();
 tripRouter.get("/all", getAllTrip);
 tripRouter.post("/createNewTrip", authentication, creatNewTrip);
 
+
+
 module.exports = { tripRouter };
