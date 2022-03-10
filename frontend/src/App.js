@@ -1,22 +1,20 @@
 import "./App.css";
-import NewTrip from "./components/add trip/addtrip";
-import { Route, Routes } from "react-router-dom";
-
-
-
-
-
-function App() {
+import "./components/Navbar.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import NavBar from "./components/Navbar";
+import Profile from "./components/Profile";
+const App = () => {
   return (
     <>
-    <div className="App">
-      <h1>Start project 6</h1>
+      <NavBar />
       <Routes>
-      <Route path="/addtrip" element={<NewTrip/>} />{" "}
-      </Routes>
-    </div>
-    </>
-  );
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>{" "}
+</>
+  )
 }
-
 export default App;
+
