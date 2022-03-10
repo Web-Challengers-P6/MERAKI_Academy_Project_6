@@ -1,6 +1,14 @@
 import React from "react";
-
+import axios from "axios";
 const Profile = () => {
+  const getAllInformationFE = () => {
+    axios.get(
+        `http://localhost:5000/product/byuser`,
+        userId
+      );
+
+
+  };
   return (
     <div class="container rounded bg-white mt-5 mb-5">
       <div class="row">
@@ -53,7 +61,6 @@ const Profile = () => {
                 <label class="labels">Country</label>
                 <input type="text" class="form-control" placeholder="country" />
               </div>
-             
             </div>
             <div class="mt-5 text-center">
               <button class="btn btn-primary profile-button" type="button">
