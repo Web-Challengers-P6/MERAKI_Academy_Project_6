@@ -1,3 +1,9 @@
 .navLinks {
   padding-left: 2rem !important;
 }
+#logo {
+  margin-left: 0% !important;
+}
+Navbar.Brand {
+  margin-left: 0% !important;
+}
