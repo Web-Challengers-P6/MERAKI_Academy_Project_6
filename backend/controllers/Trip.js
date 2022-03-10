@@ -21,6 +21,8 @@ const creatNewTrip = (req, res) => {
   const driverId = req.token.userId;
   const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId) VALUES (?,?,?,?,?,?,?);`;
   const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId];
+ 
+
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -28,13 +30,14 @@ const creatNewTrip = (req, res) => {
         massage: "Server error",
         err: err,
       });
+    } else {
+      console.log("asdnlaskdn;askda;sd");
+      res.status(200).json({
+        success: true,
+        massage: "Success Trip created",
+        results: result,
+      });
     }
-    // result are the data returned by mysql server
-    res.status(200).json({
-      success: true,
-      massage: "Success Trip created",
-      results: result,
-    });
   });
 };
 module.exports = { creatNewTrip, getAllTrip };
