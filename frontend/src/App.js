@@ -1,4 +1,5 @@
 import "./App.css";
+
 import "./components/Navbar.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
@@ -13,8 +14,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>{" "}
-    </>
-  );
-};
-
+</>
+  )
+}
 export default App;
