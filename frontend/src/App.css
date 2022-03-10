@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+body {
+  background-color: gray !important;
+}
+/* #home {
+  color: red;
+  margin-left: 200px;
+} */
