@@ -37,7 +37,7 @@ const iniaialState = {
     return { type: "ADD_TRIPS", payload: trips };
   };
   export const updateTrip = (updatedTrip) => {
-    return { type: "UPDATE_TRIP", payload: updatedProduct };
+    return { type: "UPDATE_TRIP", payload: updatedTrip };
   };
   
   export const deleteTrip = (id) => {
