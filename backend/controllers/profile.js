@@ -12,7 +12,7 @@ const getAllInformation = (req, res) => {
     } else {
       res.status(200).json({
         success: true,
-        message: "All information for user",
+        message: "All information for user ",
         result: result,
       });
     }
