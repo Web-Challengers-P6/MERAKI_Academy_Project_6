@@ -8,24 +8,26 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Navbar.Brand id="logo" href="home">
+          PickUP
+        </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link className="navLinks" href="home">
             Home
           </Nav.Link>
-          <Nav.Link className="navLinks" href="features">
+          <Nav.Link className="navLinks" href="addTrip">
             Add Trip
           </Nav.Link>
-          <Nav.Link className="navLinks" href="pricing">
+          <Nav.Link className="navLinks" href="filter">
             Filter
           </Nav.Link>
-          <Nav.Link className="navLinks" href="pricing">
+          <Nav.Link className="navLinks" href="contactUs">
             Contact Us
           </Nav.Link>
-          <Nav.Link className="navLinks" href="pricing">
-            About Us
+          <Nav.Link className="navLinks" href="profile">
+            Profile
           </Nav.Link>
-          <Nav.Link className="navLinks" href="pricing">
+          <Nav.Link className="navLinks" href="login">
             Login
           </Nav.Link>
         </Nav>
