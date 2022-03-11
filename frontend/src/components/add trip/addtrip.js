@@ -2,6 +2,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+import "../add trip/addtrip.css"
+
 
 
 
@@ -79,39 +83,51 @@ const NewTrip = () => {
  
   return (
     <>
+    <br />
       <form onSubmit={createNewTrip}>
-        <br />
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Trip name</label>
         <input
           type="text"
-          placeholder="Trip name "
+          placeholder="Please type here"
+        className="form-control"
+        id="formGroupExampleInput"
           onChange={(e) => settripName(e.target.value)}
         />
         <br />
-        <textarea
-          placeholder="Trip from"
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Trip from</label>
+        <input
+          placeholder="Please type here"
+          className="form-control"
+        id="formGroupExampleInput"
           onChange={(e) => setTRIPfrom(e.target.value)}
-        ></textarea>
+        ></input>
         <br />
-        <textarea
-          placeholder="Trip to"
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Trip to</label>
+        <input
+          placeholder="Please type here"
+          className="form-control"
+        id="formGroupExampleInput"
           onChange={(e) => setTRIPto(e.target.value)}
-        ></textarea>
+        ></input>
         <br />
-        <br />
-        <textarea
-          placeholder="Number of passengers"
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Number of passengers</label>
+        <input
+          placeholder="Please type here a number"
+          className="form-control"
+        id="formGroupExampleInput"
           onChange={(e) => setnumbersite(e.target.value)}
-        ></textarea>
+        ></input>
         <br />
-        <br />
-        <textarea
-          placeholder="Price per passenger"
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Price per passenger</label>
+        <input
+          placeholder="Please type here a number"
+          className="form-control"
+        id="formGroupExampleInput"
           onChange={(e) => setPrice(e.target.value)}
-        ></textarea>
+        ></input>
         <br />
-        <button>Create New Trip</button>
+        <Button variant="primary">Create New Trip</Button>
       </form>
-      <br />
       {status
         ? message && (
             <div className="SuccessMessage">
