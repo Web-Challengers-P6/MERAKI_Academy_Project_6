@@ -1,10 +1,23 @@
 import React from "react";
 import axios from "axios";
+import { useEffect } from "react";
 const Profile = () => {
-  //   const userId = 1;
-  //   const getAllInformationFE = () => {
-  //     axios.get(`http://localhost:5000/profile/:${userId}`);
-  //   };
+  const userId = 1;
+  const getAllInformationFE = () => {
+    axios
+      .get(`http://localhost:5000/profile/${userId}`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    console.log("die");
+
+    getAllInformationFE();
+  }, []);
   return (
     <div>
       <div className="container rounded bg-white mt-5 mb-5">
@@ -70,34 +83,6 @@ const Profile = () => {
                 >
                   Save Profile
                 </button>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center experience">
-                <span>Edit Experience</span>
-                <span className="border px-3 p-1 add-experience">
-                  <i className="fa fa-plus"></i>&nbsp;Experience
-                </span>
-              </div>
-              <br />
-              <div className="col-md-12">
-                <label className="labels">Experience in Designing</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="experience"
-                />
-              </div>{" "}
-              <br />
-              <div className="col-md-12">
-                <label className="labels">Additional Details</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="additional details"
-                />
               </div>
             </div>
           </div>
