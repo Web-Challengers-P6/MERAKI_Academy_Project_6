@@ -1,21 +1,26 @@
 import React from "react";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const Profile = () => {
   const userId = 1;
-  const getAllInformationFE = () => {
-    axios
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState();
+  const getAllInformationFE = async () => {
+    await axios
       .get(`http://localhost:5000/profile/${userId}`)
       .then((result) => {
         console.log(result);
+        setEmail(result.data.result.email);
+        setUserName(result.data.result.userName);
+        setPhoneNumber(result.data.result.Phone_number);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    console.log("die");
 
+  useEffect(() => {
     getAllInformationFE();
   }, []);
   return (
@@ -29,8 +34,8 @@ const Profile = () => {
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
-              <span className="font-weight-bold">Edogaru</span>
-              <span className="text-black-50">edogaru@mail.com.my</span>
+              <span className="font-weight-bold">{userName}</span>
+              <span className="text-black-50">{email}</span>
               <span> </span>
             </div>
           </div>
