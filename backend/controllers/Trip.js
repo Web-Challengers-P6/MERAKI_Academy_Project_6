@@ -39,5 +39,12 @@ const creatNewTrip = (req, res) => {
       });
     }
   });
+
+  const updateTrip=(req,res)=>{
+
+const query=
+
+
+  }
 };
 module.exports = { creatNewTrip, getAllTrip };
