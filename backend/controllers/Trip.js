@@ -64,4 +64,5 @@ const updateTrip = (req, res) => {
     }
   });
 };
-module.exports = { creatNewTrip, getAllTrip, updateTrip };
+const deleteTrip = (req, res) => {};
+module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
