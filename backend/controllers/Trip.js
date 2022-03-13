@@ -38,11 +38,46 @@ const creatNewTrip = (req, res) => {
       });
     }
   });
-
-  const updateTrip = (req, res) => {
-    const query = ``;
-
-    //we want to make the update then the delete BE AND FE
-  };
 };
-module.exports = { creatNewTrip, getAllTrip };
+const updateTrip = (req, res) => {
+  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite } = req.body;
+
+  const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=? WHERE id=?; `;
+  //Image=?,
+  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
+
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        message: "did not update the trip`s information ",
+        result: result,
+      });
+    } else {
+      console.log("updated wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        message: "trip`s information were successfuly updated ",
+      });
+    }
+  });
+};
+const deleteTrip = (req, res) => {
+  const tripId = req.body.tripId;
+  const query = `delete from trip where id=${tripId};`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err.message);
+      res.status(500).json({
+        success: false,
+        message: "somthing went wrong while deleting this trip",
+      });
+    } else {
+      console.log(result);
+      res.status(200).json({ success: true, message: "trip was deleted" });
+    }
+  });
+};
+module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };

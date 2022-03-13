@@ -6,6 +6,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState();
+  const [allResult, setAllResult] = useState([]);
   const getAllInformationFE = async () => {
     await axios
       .get(`http://localhost:5000/profile/${userId}`)
@@ -14,6 +15,7 @@ const Profile = () => {
         setEmail(result.data.result.email);
         setUserName(result.data.result.userName);
         setPhoneNumber(result.data.result.Phone_number);
+        setAllResult(result.data.result);
       })
       .catch((err) => {
         console.log(err);
@@ -34,8 +36,16 @@ const Profile = () => {
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
-              <span className="font-weight-bold">{userName}</span>
-              <span className="text-black-50">{email}</span>
+              <span className="font-weight-bold">
+                {allResult.map((elem) => {
+                  return elem.Username;
+                })}
+              </span>
+              <span className="text-black-50">
+                {allResult.map((elem) => {
+                  return elem.email;
+                })}
+              </span>
               <span> </span>
             </div>
           </div>
@@ -50,15 +60,19 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="first name"
+                    placeholder={allResult.map((elem) => {
+                      return elem.Username;
+                    })}
                   />
                 </div>
                 <div className="col-md-6">
-                  <label className="labels">Last Name</label>
+                  <label className="labels">Email</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Last Name"
+                    placeholder={allResult.map((elem) => {
+                      return elem.email;
+                    })}
                   />
                 </div>
               </div>
@@ -68,16 +82,9 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter phone number"
-                  />
-                </div>
-
-                <div className="col-md-6">
-                  <label className="labels">Country</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="country"
+                    placeholder={allResult.map((elem) => {
+                      return elem.email
+                    })}
                   />
                 </div>
               </div>
