@@ -67,6 +67,17 @@ const updateTrip = (req, res) => {
 const deleteTrip = (req, res) => {
   const tripId = req.body.tripId;
   const query = `delete from trip where id=${tripId};`;
-  
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err.message);
+      res.status(500).json({
+        success: false,
+        message: "somthing went wrong while deleting this trip",
+      });
+    } else {
+      console.log(result);
+      res.status(200).json({ success: true, message: "trip was deleted" });
+    }
+  });
 };
 module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
