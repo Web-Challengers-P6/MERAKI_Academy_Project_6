@@ -40,9 +40,9 @@ const creatNewTrip = (req, res) => {
   });
 };
 const updateTrip = (req, res) => {
-  const [tripName, TRIPfrom, TRIPto, Image, Price, numbersite] = req.body;
+  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite } = req.body;
 
-  const query = `insert into trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite) values (?,?,?,?,?,?) where and id=? `;
+  const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=? WHERE id=?; `;
   const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
 
   connection.query(query, data, (err, result) => {
@@ -58,7 +58,7 @@ const updateTrip = (req, res) => {
       console.log(result);
       res.status(200).json({
         success: true,
-        message: "trip`s information were updated successfuly",
+        message: "trip`s information were successfuly updated ",
       });
     }
   });
