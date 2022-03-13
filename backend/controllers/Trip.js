@@ -55,14 +55,12 @@ const creatNewTrip = (req, res) => {
         });
       } else {
         console.log(result);
-        res
-          .status(200)
-          .json({
-            success: true,
-            message: "trip`s information were updated successfuly",
-          });
+        res.status(200).json({
+          success: true,
+          message: "trip`s information were updated successfuly",
+        });
       }
     });
   };
 };
-module.exports = { creatNewTrip, getAllTrip };
+module.exports = { creatNewTrip, getAllTrip, updateTrip };
