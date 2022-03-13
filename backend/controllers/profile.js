@@ -10,6 +10,7 @@ const getAllInformation = (req, res) => {
         .status(404)
         .json({ success: false, message: "no results where found", err });
     } else {
+      console.log(result);
       res.status(200).json({
         success: true,
         message: "All information for user ",
@@ -20,4 +21,3 @@ const getAllInformation = (req, res) => {
 };
 module.exports = getAllInformation;
 //done
-

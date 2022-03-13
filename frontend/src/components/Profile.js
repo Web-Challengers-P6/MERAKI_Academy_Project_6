@@ -1,10 +1,28 @@
 import React from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 const Profile = () => {
-  //   const userId = 1;
-  //   const getAllInformationFE = () => {
-  //     axios.get(`http://localhost:5000/profile/:${userId}`);
-  //   };
+  const userId = 1;
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState();
+  const getAllInformationFE = async () => {
+    await axios
+      .get(`http://localhost:5000/profile/${userId}`)
+      .then((result) => {
+        console.log(result);
+        setEmail(result.data.result.email);
+        setUserName(result.data.result.userName);
+        setPhoneNumber(result.data.result.Phone_number);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllInformationFE();
+  }, []);
   return (
     <div>
       <div className="container rounded bg-white mt-5 mb-5">
@@ -16,8 +34,8 @@ const Profile = () => {
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
-              <span className="font-weight-bold">Edogaru</span>
-              <span className="text-black-50">edogaru@mail.com.my</span>
+              <span className="font-weight-bold">{userName}</span>
+              <span className="text-black-50">{email}</span>
               <span> </span>
             </div>
           </div>
@@ -70,34 +88,6 @@ const Profile = () => {
                 >
                   Save Profile
                 </button>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center experience">
-                <span>Edit Experience</span>
-                <span className="border px-3 p-1 add-experience">
-                  <i className="fa fa-plus"></i>&nbsp;Experience
-                </span>
-              </div>
-              <br />
-              <div className="col-md-12">
-                <label className="labels">Experience in Designing</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="experience"
-                />
-              </div>{" "}
-              <br />
-              <div className="col-md-12">
-                <label className="labels">Additional Details</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="additional details"
-                />
               </div>
             </div>
           </div>

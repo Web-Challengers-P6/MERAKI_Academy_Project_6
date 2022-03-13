@@ -21,7 +21,6 @@ const creatNewTrip = (req, res) => {
   const driverId = req.token.userId;
   const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId) VALUES (?,?,?,?,?,?,?);`;
   const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId];
- 
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -39,5 +38,11 @@ const creatNewTrip = (req, res) => {
       });
     }
   });
+
+  const updateTrip = (req, res) => {
+    const query = ``;
+
+    //we want to make the update then the delete BE AND FE
+  };
 };
 module.exports = { creatNewTrip, getAllTrip };
