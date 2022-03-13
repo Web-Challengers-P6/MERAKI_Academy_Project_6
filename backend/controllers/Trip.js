@@ -38,29 +38,29 @@ const creatNewTrip = (req, res) => {
       });
     }
   });
+};
+const updateTrip = (req, res) => {
+  const [tripName, TRIPfrom, TRIPto, Image, Price, numbersite] = req.body;
 
-  const updateTrip = (req, res) => {
-    const [tripName, TRIPfrom, TRIPto, Image, Price, numbersite] = req.body;
+  const query = `insert into trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite) values (?,?,?,?,?,?) where and id=? `;
+  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
 
-    const query = `insert into trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite) values (?,?,?,?,?,?) where and id=? `;
-    const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
-
-    connection.query(query, data, (err, result) => {
-      if (err) {
-        console.log(err);
-        res.status(500).json({
-          success: false,
-          message: "did not update the trip`s information ",
-          result: result,
-        });
-      } else {
-        console.log(result);
-        res.status(200).json({
-          success: true,
-          message: "trip`s information were updated successfuly",
-        });
-      }
-    });
-  };
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        success: false,
+        message: "did not update the trip`s information ",
+        result: result,
+      });
+    } else {
+      console.log("updated wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        message: "trip`s information were updated successfuly",
+      });
+    }
+  });
 };
 module.exports = { creatNewTrip, getAllTrip, updateTrip };
