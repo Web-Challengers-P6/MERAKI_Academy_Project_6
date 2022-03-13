@@ -64,5 +64,9 @@ const updateTrip = (req, res) => {
     }
   });
 };
-const deleteTrip = (req, res) => {};
+const deleteTrip = (req, res) => {
+  const tripId = req.body.tripId;
+  const query = `delete from trip where id=${tripId};`;
+  
+};
 module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
