@@ -43,6 +43,7 @@ const updateTrip = (req, res) => {
   const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite } = req.body;
 
   const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=? WHERE id=?; `;
+  //Image=?,
   const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
 
   connection.query(query, data, (err, result) => {
