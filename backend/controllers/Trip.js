@@ -40,7 +40,8 @@ const creatNewTrip = (req, res) => {
   });
 
   const updateTrip = (req, res) => {
-    const query = ``;
+    const userId = req.body.userId;
+    const query = `insert into trip () where and id=? `;
 
     //we want to make the update then the delete BE AND FE
   };
