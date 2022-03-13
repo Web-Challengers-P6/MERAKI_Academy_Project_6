@@ -38,12 +38,14 @@ const Profile = () => {
               />
               <span className="font-weight-bold">
                 {allResult.map((elem) => {
-                  return elem.Username
+                  return elem.Username;
                 })}
               </span>
-              <span className="text-black-50">{allResult.map((elem) => {
-                  return elem.email
-                })}</span>
+              <span className="text-black-50">
+                {allResult.map((elem) => {
+                  return elem.email;
+                })}
+              </span>
               <span> </span>
             </div>
           </div>
@@ -58,15 +60,19 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="first name"
+                    placeholder={allResult.map((elem) => {
+                      return elem.Username;
+                    })}
                   />
                 </div>
                 <div className="col-md-6">
-                  <label className="labels">Last Name</label>
+                  <label className="labels">Email</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Last Name"
+                    placeholder={allResult.map((elem) => {
+                      return elem.email;
+                    })}
                   />
                 </div>
               </div>
@@ -76,16 +82,9 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter phone number"
-                  />
-                </div>
-
-                <div className="col-md-6">
-                  <label className="labels">Country</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="country"
+                    placeholder={allResult.map((elem) => {
+                      return elem.email
+                    })}
                   />
                 </div>
               </div>
