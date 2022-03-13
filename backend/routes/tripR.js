@@ -8,6 +8,6 @@ const tripRouter = express.Router();
 //main route is /trip
 tripRouter.get("/all", getAllTrip);
 tripRouter.post("/createNewTrip", authentication, creatNewTrip);
-tripRouter.put();
+tripRouter.put("/update", updateTrip);
 
 module.exports = { tripRouter };
