@@ -45,7 +45,14 @@ const creatNewTrip = (req, res) => {
     const query = `insert into trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite) values (?,?,?,?,?,?) where and id=? `;
     const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
 
-    //we want to make the update then the delete BE AND FE
+    connection.query(query,data,(err,result)=>{
+
+if (err) {
+  console.log(err);
+  res.status(200).json({success:true,message:"did not update the trip`s information "})}
+
+
+    })
   };
 };
 module.exports = { creatNewTrip, getAllTrip };
