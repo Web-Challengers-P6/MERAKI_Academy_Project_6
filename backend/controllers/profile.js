@@ -19,5 +19,7 @@ const getAllInformation = (req, res) => {
     }
   });
 };
-module.exports = getAllInformation;
+const editProfile = (req, res) => {};
+
+module.exports = { getAllInformation, editProfile };
 //done

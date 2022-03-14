@@ -83,7 +83,7 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     placeholder={allResult.map((elem) => {
-                      return elem.email
+                      return elem.Phone_number;
                     })}
                   />
                 </div>
