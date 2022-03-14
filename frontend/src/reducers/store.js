@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import login from "./trips/loginReducer/index";
+import login from "./loginReducer/index";
 const reducers = combineReducers({ login });
 
 const store = createStore(reducers);
