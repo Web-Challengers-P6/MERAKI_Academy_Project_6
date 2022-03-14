@@ -22,8 +22,8 @@ const getAllInformation = (req, res) => {
 };
 const editProfile = (req, res) => {
   const userId = req.params.userId;
-  const [Username, email, Phone_number] = req.body;
-  const query = `update user set Username=?,email=?,Phone_number=?; where id=${userId}`;
+  const {Username, email, Phone_number} = req.body;
+  const query = `update user set Username=?,email=?,Phone_number=? where id=${userId};`;
   const data = [Username, email, Phone_number];
   connection.query(query, data, (err, result) => {
     if (err) {
