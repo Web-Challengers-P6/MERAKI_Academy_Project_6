@@ -23,6 +23,26 @@ h1 {
 h2 {
 	text-align: center;
 }
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span {
+	font-size: 12px;
+}
+
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
 button {
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
@@ -48,6 +68,7 @@ button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
+
 form {
 	background-color: #FFFFFF;
 	display: flex;
@@ -78,6 +99,7 @@ input {
 	max-width: 100%;
 	min-height: 480px;
 }
+
 .form-container {
 	position: absolute;
 	top: 0;
@@ -135,6 +157,7 @@ input {
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
 }
+
 .overlay {
 	background: #FF416C;
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
