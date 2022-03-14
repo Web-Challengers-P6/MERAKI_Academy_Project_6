@@ -95,13 +95,13 @@ const Login = () => {
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input type="text" placeholder="Name"   onChange={(e) => setUsername(e.target.value)} />
+			<input type="email" placeholder="Email"  onChange={(e) => setEmail(e.target.value)} />
+			<input type="password" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} />
 			<button>Sign Up</button>
 		</form>
 	</div>
-	{/* <div class="form-container sign-in-container">
+	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Sign in</h1>
 			<div class="social-container">
@@ -110,8 +110,8 @@ const Login = () => {
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+			<input type="password" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} />
 			<a href="#">Forgot your password?</a>
 			<button>Sign In</button>
 		</form>
@@ -132,7 +132,7 @@ const Login = () => {
 	</div>
 </div>
 
-<footer> */}
+<footer>
 	<p>
 		Created with <i class="fa fa-heart"></i> by
 		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
