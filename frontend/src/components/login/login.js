@@ -82,12 +82,22 @@ const Login = () => {
       history("/Home");
     } else history("/login");
   }, [state.isLoggedIn]);
-
+  const signUpButton = document.getElementById('signUp');
+  const signInButton = document.getElementById('signIn');
+  const container = document.getElementById('container');
+  
+  signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+  });
+  
+  signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+  });
       return (
         <>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form action="#" onSubmit={addNewUser}>
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -102,7 +112,7 @@ const Login = () => {
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form action="#" onSubmit={loginUser}>
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
