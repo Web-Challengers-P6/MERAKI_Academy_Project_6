@@ -1,3 +1,4 @@
+const connection = require("../database/db");
 const db = require("../database/db");
 const Connection = require("../database/db");
 const getAllInformation = (req, res) => {
@@ -19,7 +20,13 @@ const getAllInformation = (req, res) => {
     }
   });
 };
-const editProfile = (req, res) => {};
+const editProfile = (req, res) => {
+  const userId = req.params.userId;
+  const [Username, email, Phone_number] = req.body;
+  const query = `update user set Username=?,email=?,Phone_number=?; where id=${userId}`;
+
+  connection.query(query,)
+};
 
 module.exports = { getAllInformation, editProfile };
 //done
