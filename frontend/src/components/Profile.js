@@ -18,7 +18,17 @@ const Profile = () => {
         console.log(err);
       });
   };
-
+  const sendInfo = () => {
+    console.log("it was sent");
+    axios
+      .put(`http://localhost:5000/profile/edit/${userId}`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   useEffect(() => {
     getAllInformationFE();
   }, []);
@@ -98,6 +108,7 @@ const Profile = () => {
                 <button
                   className="btn btn-primary profile-button"
                   type="button"
+                  onClick={sendInfo}
                 >
                   Save Profile
                 </button>
