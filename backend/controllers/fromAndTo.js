@@ -3,6 +3,8 @@ const Connection = require("../database/db");
 const fromAndTo = (req, res) => {
   const fromPoint = req.body.TRIPfrom;
   const toPoint = req.body.TRIPto;
+  
+  console.log(req.body);
 
   const query = `select * from trip where TRIPfrom=? and TRIPto=? `;
   const data = [fromPoint, toPoint];
