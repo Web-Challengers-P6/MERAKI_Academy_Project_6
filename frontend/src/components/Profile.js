@@ -12,16 +12,23 @@ const Profile = () => {
       .get(`http://localhost:5000/profile/${userId}`)
       .then((result) => {
         console.log(result);
-        setEmail(result.data.result.email);
-        setUserName(result.data.result.userName);
-        setPhoneNumber(result.data.result.Phone_number);
         setAllResult(result.data.result);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+  const sendInfo = () => {
+    console.log("it was sent");
+    axios
+      .put(`http://localhost:5000/profile/edit/${userId}`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   useEffect(() => {
     getAllInformationFE();
   }, []);
@@ -60,6 +67,9 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                    }}
                     placeholder={allResult.map((elem) => {
                       return elem.Username;
                     })}
@@ -70,6 +80,9 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                     placeholder={allResult.map((elem) => {
                       return elem.email;
                     })}
@@ -82,8 +95,11 @@ const Profile = () => {
                   <input
                     type="text"
                     className="form-control"
+                    onChange={(e) => {
+                      setPhoneNumber(e.target.value);
+                    }}
                     placeholder={allResult.map((elem) => {
-                      return elem.email
+                      return elem.Phone_number;
                     })}
                   />
                 </div>
@@ -92,6 +108,7 @@ const Profile = () => {
                 <button
                   className="btn btn-primary profile-button"
                   type="button"
+                  onClick={sendInfo}
                 >
                   Save Profile
                 </button>
