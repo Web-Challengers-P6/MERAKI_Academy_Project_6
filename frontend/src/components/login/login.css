@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-* {
+.container {
 	box-sizing: border-box;
 }
 
-body {
+.container {
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
@@ -248,4 +248,4 @@ footer i {
 footer a {
     color: #3c97bf;
     text-decoration: none;
-}
+} */

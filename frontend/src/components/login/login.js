@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ const Login = () => {
   const [Phone_number, setPhone_number] = useState(0);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
+  const [Password, setPassword] = useState("");
   const token = localStorage.getItem("token");
   const User = localStorage.getItem("User");
 
@@ -38,7 +38,7 @@ const Login = () => {
     try {
       const res = await axios.post("http://localhost:5000/login", {
         email,
-        password,
+        Password,
       });
       if (res.data) {
         console.log(res.data)
@@ -62,8 +62,9 @@ const Login = () => {
         Username,
         Phone_number,
         email,
-        password,
+        Password,
       });
+      console.log(result);
       if (result.data.success) {
         setStatus(true);
         setMessage("The user has been created successfully");
@@ -86,13 +87,13 @@ const Login = () => {
   const signInButton = document.getElementById('signIn');
   const container = document.getElementById('container');
   
-  signUpButton.addEventListener('click', () => {
-    container.classList.add("right-panel-active");
-  });
+  // signUpButton.addEventListener('click', () => {
+  //   container.classList.add("right-panel-active");
+  // });
   
-  signInButton.addEventListener('click', () => {
-    container.classList.remove("right-panel-active");
-  });
+  // signInButton.addEventListener('click', () => {
+  //   container.classList.remove("right-panel-active");
+  // });
       return (
         <>
 <div class="container" id="container">
@@ -143,12 +144,6 @@ const Login = () => {
 </div>
 
 <footer>
-	<p>
-		Created with <i class="fa fa-heart"></i> by
-		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-		- Read how I created this and how you can join the challenge
-		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-	</p>
 </footer>        </>
       );
     };
