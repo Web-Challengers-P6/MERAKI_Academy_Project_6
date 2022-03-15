@@ -2,11 +2,13 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const Profile = () => {
-  const userId = 1;
+  const userId = localStorage.getItem("User");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState();
   const [allResult, setAllResult] = useState([]);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
   const getAllInformationFE = async () => {
     await axios
       .get(`http://localhost:5000/profile/${userId}`)
@@ -17,6 +19,21 @@ const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+  const uploadImage = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "tutorial");
+    data.append("cloud_name", "breellz");
+    fetch("  https://api.cloudinary.com/v1_1/breellz/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setUrl(data.url);
+      })
+      .catch((err) => console.log(err));
   };
   const sendInfo = () => {
     console.log("it was sent");
