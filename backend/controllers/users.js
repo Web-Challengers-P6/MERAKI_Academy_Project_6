@@ -1,5 +1,5 @@
 const connection = require("../database/db");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
