@@ -35,18 +35,25 @@ const Filter = () => {
     <>
       <form onSubmit={filteredTrips}>
         <br />
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Pick up location</label>
         <input
           type="text"
-          placeholder="Trip starts from"
+          placeholder="Please type it here"
+          className="form-control"
+          id="formGroupExampleInput"
           onChange={(e) => setTRIPfrom(e.target.value)}
         />
         <br />
-        <textarea
-          placeholder="Trip going to"
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Destination to</label>
+        <input
+          type="text"
+          placeholder="Please type it here"
+          className="form-control"
+          id="formGroupExampleInput"
           onChange={(e) => setTRIPto(e.target.value)}
-        ></textarea>
+        ></input>
         <br />
-        <button>Search</button>
+        <Button type = "submit">Search</Button>
       </form>
 
       <div className="gridcontainer">
