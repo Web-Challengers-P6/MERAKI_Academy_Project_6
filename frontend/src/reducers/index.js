@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import loginReducer from "./login";
+import loginReducer from "./loginReducer";
 import trips from "./trips";
 
 const reducers = combineReducers({ loginReducer ,trips });
