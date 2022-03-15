@@ -23,7 +23,7 @@ const Login = () => {
   const [Phone_number, setPhone_number] = useState(0);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
+  const [Password, setPassword] = useState("");
   const token = localStorage.getItem("token");
   const User = localStorage.getItem("User");
 
@@ -37,7 +37,7 @@ const Login = () => {
     try {
       const res = await axios.post("http://localhost:5000/login", {
         email,
-        password,
+        Password,
       });
       if (res.data) {
         console.log(res.data);
@@ -61,8 +61,9 @@ const Login = () => {
         Username,
         Phone_number,
         email,
-        password,
+        Password,
       });
+      console.log(result);
       if (result.data.success) {
         setStatus(true);
         setMessage("The user has been created successfully");
@@ -82,121 +83,104 @@ const Login = () => {
     } else history("/login");
   }, [state.isLoggedIn]);
 
-  //===============================================================
+  const signUpButton = document.getElementById("signUp");
+  const signInButton = document.getElementById("signIn");
+  const container = document.getElementById("container");
 
+  // signUpButton.addEventListener('click', () => {
+  //   container.classList.add("right-panel-active");
+  // });
+
+  // signInButton.addEventListener('click', () => {
+  //   container.classList.remove("right-panel-active");
+  // });
   return (
     <>
-      <div className="bodylogin">
-        <div class="main">
-          <input className="inp" type="checkbox" id="chk" aria-hidden="true" />
-
-          <div class="signup">
-            <form onSubmit={addNewUser}>
-              <label className="lable" for="chk" aria-hidden="true">
-                Sign up
-              </label>
-              <input
-                className="inp"
-                onChange={(e) => setUsername(e.target.value)}
-                type="text"
-                name="txt"
-                placeholder="User name"
-                required=""
-              />
-              <input
-                className="inp"
-                onChange={(e) => setPhone_number(e.target.value)}
-                type="number"
-                name="phone"
-                placeholder="phone Number"
-                required=""
-              />
-              <input
-                className="inp"
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                name="email"
-                placeholder="Email"
-                required=""
-              />
-              <input
-                className="inp"
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                name="pswd"
-                placeholder="Password"
-                required=""
-              />
-              {/* <button
-                onClick={() => {
-                  Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Account successfully created",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                }}
-                className="btnsignup"
-              > */}
-                {/* Sign up */}
-              {/* </button> */}
-            </form>
-          </div>
-
-          <div class="login">
-            <form>
-              <label className="lable" for="chk" aria-hidden="true">
-                Login
-              </label>
-              <input
-                className="inp"
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                name="email"
-                placeholder="Email"
-                required=""
-              />
-              <input
-                className="inp"
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                name="pswd"
-                placeholder="Password"
-                required=""
-              />
-              <button className="btnlogin" onClick={loginUser}>
-                Login
+      <div class="container" id="container">
+        <div class="form-container sign-up-container">
+          <form action="#" onSubmit={addNewUser}>
+            <h1>Create Account</h1>
+            <div class="social-container">
+              <a href="#" class="social">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <span>or use your email for registration</span>
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button>Sign Up</button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form action="#" onSubmit={loginUser}>
+            <h1>Sign in</h1>
+            <div class="social-container">
+              <a href="#" class="social">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+              <a href="#" class="social">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <span>or use your account</span>
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <a href="#">Forgot your password?</a>
+            <button>Sign In</button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
+              <button class="ghost" id="signIn">
+                Sign In
               </button>
-            </form>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button class="ghost" id="signUp">
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* <div className="Form">
-        <p className="Title">Login:</p>
-        <form onSubmit={loginUser}>
-          <br />
-
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <button>Login</button>
-        </form>
-
-        {status
-          ? message && <div className="SuccessMessage">{message}</div>
-          : message && <div className="ErrorMessage">{message}</div>} */}
-      {/* </div> */}
+      <footer></footer>{" "}
     </>
   );
 };
