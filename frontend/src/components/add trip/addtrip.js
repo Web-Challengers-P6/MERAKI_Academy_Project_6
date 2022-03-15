@@ -126,7 +126,7 @@ const NewTrip = () => {
           onChange={(e) => setPrice(e.target.value)}
         ></input>
         <br />
-        <Button variant="primary">Create New Trip</Button>
+        <Button type = "submit" variant="primary">Create New Trip</Button>
       </form>
       {status
         ? message && (
