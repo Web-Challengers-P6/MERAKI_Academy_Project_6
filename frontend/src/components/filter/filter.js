@@ -35,7 +35,9 @@ const Filter = () => {
     <>
       <form onSubmit={filteredTrips}>
         <br />
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Pick up location</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Pick up location
+        </label>
         <input
           type="text"
           placeholder="Please type it here"
@@ -44,7 +46,9 @@ const Filter = () => {
           onChange={(e) => setTRIPfrom(e.target.value)}
         />
         <br />
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Destination to</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Destination to
+        </label>
         <input
           type="text"
           placeholder="Please type it here"
@@ -53,7 +57,7 @@ const Filter = () => {
           onChange={(e) => setTRIPto(e.target.value)}
         ></input>
         <br />
-        <Button type = "submit">Search</Button>
+        <Button type="submit">Search</Button>
       </form>
 
       <div className="gridcontainer">
@@ -73,6 +77,7 @@ const Filter = () => {
                     <p>Charge per passenger: {elem.Price} JD</p>
                   </Card.Text>
                 </Card.Body>
+                <button>join trip</button>
               </Card>
               <br />
             </div>
