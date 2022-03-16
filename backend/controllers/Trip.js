@@ -55,7 +55,7 @@ const updateTrip = (req, res) => {
         result: result,
       });
     } else {
-      console.log("updated wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+      console.log("updated ");
       console.log(result);
       res.status(200).json({
         success: true,
@@ -81,9 +81,8 @@ const deleteTrip = (req, res) => {
   });
 };
 
-const allTripsForTheDriver=(req,res)=>{
-
-
-  
-}
+const allTripsForTheDriver = (req, res) => {
+  const userId = req.params.userId;
+  const query = `select * from trip where id =${userId}`;
+};
 module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
