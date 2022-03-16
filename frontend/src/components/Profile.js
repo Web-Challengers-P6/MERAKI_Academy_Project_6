@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import RenderInTheProfile from "./RenderInProfile";
 const Profile = () => {
   const userId = localStorage.getItem("User");
   const [email, setEmail] = useState("");
@@ -153,6 +154,7 @@ const Profile = () => {
                 </button>
               </div>
             </div>
+            <RenderInTheProfile></RenderInTheProfile>
           </div>
         </div>
       </div>
