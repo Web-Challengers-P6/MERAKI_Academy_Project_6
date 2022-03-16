@@ -21,12 +21,14 @@ const { profileRouter } = require("./routes/profileR");
 const { fromAndToFilterRouter } = require("./routes/fromAndtoR");
 const { searchRouter } = require("./routes/searchR");
 const { tripRouter, profileTripRender } = require("./routes/tripR");
+const { joinRouter } = require("./routes/joinAndAccept");
 //Routes Middleware
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 app.use("/filter", fromAndToFilterRouter);
 app.use("/trip", tripRouter);
 app.use("/profileRender", profileTripRender);
+app.use("/join", joinRouter);
 
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
