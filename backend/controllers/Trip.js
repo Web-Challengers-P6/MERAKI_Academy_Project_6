@@ -84,5 +84,22 @@ const deleteTrip = (req, res) => {
 const allTripsForTheDriver = (req, res) => {
   const userId = req.params.userId;
   const query = `select * from trip where id =${userId}`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "did not find trips for the user" });
+    } else {
+      console.log(result);
+      res
+        .status(200)
+        .json({
+          success: true,
+          message: "all trips were found ",
+          result: result,
+        });
+    }
+  });
 };
 module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
