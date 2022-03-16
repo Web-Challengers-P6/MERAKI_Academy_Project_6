@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const RenderInTheProfile = () => {
   const [ownTrips, setOwnTrips] = useState([]);
 
   const renderOwnTrips = async () => {
+    const userId = localStorage.getItem("User");
     await axios
       .get(`http://localhost:5000/profileRender/${userId}`)
       .then((result) => {
@@ -15,16 +16,16 @@ const RenderInTheProfile = () => {
       });
   };
   useEffect(() => {
-    renderOwnTrips;
+    renderOwnTrips();
   }, []);
   //what is left is to return the result using HOF
   return (
     <div>
-      <h1>ggg</h1>
       <p>
         {" "}
+        trips:
         {ownTrips.map((elem) => {
-          return elem;
+          return <p>{elem.tripName}</p>;
         })}
       </p>
     </div>
