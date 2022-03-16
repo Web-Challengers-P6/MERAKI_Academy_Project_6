@@ -44,7 +44,7 @@ const Login = () => {
         setMessage("true");
         localStorage.setItem("User", res.data.results.id);
         localStorage.setItem("token", res.data.token);
-
+setStatus(true)
         dispatch(loginReducer(res.data.token));
       } else throw Error;
     } catch (error) {
@@ -79,6 +79,7 @@ const Login = () => {
 
   useEffect(() => {
     if (state.isLoggedIn) {
+      console.log(state.isLoggedIn)
       history("/Home");
     } else history("/login");
   }, [state.isLoggedIn]);
@@ -159,7 +160,7 @@ const Login = () => {
             <button>Sign In</button>
           </form>
         </div>
-        <div class="overlay-container">
+        {/* <div class="overlay-container">
           <div class="overlay">
             <div class="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
@@ -177,8 +178,8 @@ const Login = () => {
                 Sign Up
               </button>
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
       <footer></footer>{" "}
     </>
