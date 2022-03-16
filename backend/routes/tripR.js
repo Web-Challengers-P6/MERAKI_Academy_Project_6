@@ -1,7 +1,12 @@
 const express = require("express");
 
 const { getAllTrip } = require("../controllers/Trip");
-const { creatNewTrip, updateTrip, deleteTrip } = require("../controllers/Trip");
+const {
+  creatNewTrip,
+  updateTrip,
+  deleteTrip,
+  allTripsForTheDriver,
+} = require("../controllers/Trip");
 const authentication = require("../middleware/authentication");
 
 const tripRouter = express.Router();
@@ -11,4 +16,8 @@ tripRouter.post("/createNewTrip", authentication, creatNewTrip);
 tripRouter.put("/update", updateTrip);
 tripRouter.delete("/delete", deleteTrip);
 
-module.exports = { tripRouter };
+//main route is/profileRender
+const profileTripRender = express.Router();
+
+profileTripRender.get("/:userId", allTripsForTheDriver);
+module.exports = { tripRouter, profileTripRender };

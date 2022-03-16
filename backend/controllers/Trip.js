@@ -55,7 +55,7 @@ const updateTrip = (req, res) => {
         result: result,
       });
     } else {
-      console.log("updated wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+      console.log("updated ");
       console.log(result);
       res.status(200).json({
         success: true,
@@ -80,4 +80,30 @@ const deleteTrip = (req, res) => {
     }
   });
 };
-module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
+
+const allTripsForTheDriver = (req, res) => {
+  const userId = req.params.userId;
+  const query = `select * from trip where driverId =${userId}`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "did not find trips for the user" });
+    } else {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        message: "all trips were found ",
+        result: result,
+      });
+    }
+  });
+};
+module.exports = {
+  creatNewTrip,
+  getAllTrip,
+  updateTrip,
+  deleteTrip,
+  allTripsForTheDriver,
+};

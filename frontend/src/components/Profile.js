@@ -1,12 +1,15 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import RenderInTheProfile from "./RenderInProfile";
 const Profile = () => {
-  const userId = 1;
+  const userId = localStorage.getItem("User");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState();
   const [allResult, setAllResult] = useState([]);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
   const getAllInformationFE = async () => {
     await axios
       .get(`http://localhost:5000/profile/${userId}`)
@@ -18,6 +21,36 @@ const Profile = () => {
         console.log(err);
       });
   };
+  const uploadImage = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "whatEver");
+    data.append("cloud_name", "abdullahhalammoush");
+    fetch(" https://api.cloudinary.com/v1_1/abdullahhalammoush/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setUrl(data.url);
+        const urlSave = localStorage.setItem("url", url);
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  const profilePicutue = (img) => {
+    console.log("USER ID : ", userId, " \nIMAGE URL : ", image);
+    axios
+      .put(`http://localhost:5000/profile/${userId}`, { image })
+      .then((nateeja) => {
+        console.log(nateeja);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+  //check the router to resume the pic operation
+
   const sendInfo = () => {
     console.log("it was sent");
     axios
@@ -40,9 +73,11 @@ const Profile = () => {
             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
               <img
                 className="rounded-circle mt-5"
-                width="150px"
-                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                width="250px"
+                height="250px"
+                src={url}
               />
+
               <span className="font-weight-bold">
                 {allResult.map((elem) => {
                   return elem.Username;
@@ -53,6 +88,11 @@ const Profile = () => {
                   return elem.email;
                 })}
               </span>
+              <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+              ></input>
+              <button onClick={uploadImage}>Upload</button>
               <span> </span>
             </div>
           </div>
@@ -114,6 +154,7 @@ const Profile = () => {
                 </button>
               </div>
             </div>
+            <RenderInTheProfile></RenderInTheProfile>
           </div>
         </div>
       </div>
