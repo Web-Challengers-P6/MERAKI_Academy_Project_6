@@ -92,14 +92,18 @@ const allTripsForTheDriver = (req, res) => {
         .json({ success: false, message: "did not find trips for the user" });
     } else {
       console.log(result);
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: "all trips were found ",
-          result: result,
-        });
+      res.status(200).json({
+        success: true,
+        message: "all trips were found ",
+        result: result,
+      });
     }
   });
 };
-module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
+module.exports = {
+  creatNewTrip,
+  getAllTrip,
+  updateTrip,
+  deleteTrip,
+  allTripsForTheDriver,
+};
