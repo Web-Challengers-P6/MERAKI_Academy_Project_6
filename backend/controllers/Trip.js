@@ -80,4 +80,10 @@ const deleteTrip = (req, res) => {
     }
   });
 };
+
+const allTripsForTheDriver=(req,res)=>{
+
+
+  
+}
 module.exports = { creatNewTrip, getAllTrip, updateTrip, deleteTrip };
