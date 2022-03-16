@@ -9,16 +9,23 @@ const joinTripFunc = (req, res) => {
 
   const passengers = [];
   passengers.push(riderId);
-  console.log(passengers);
+  //   console.log(passengers);
   const query = `insert into rider riderid=${riderId} where tripid=${tripId} `;
-  connection.query(query,(err,result)=>{
-
-if (err) {
-    console.log(err);
-
-}
-
-  })
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({ success: false, message: "did not join" });
+    } else {
+      console.log(result, passengers);
+      res
+        .status(200)
+        .json({
+          success: true,
+          message: "joined successfully",
+          result: result,
+        });
+    }
+  });
 };
 
 module.exports = { joinTripFunc };
