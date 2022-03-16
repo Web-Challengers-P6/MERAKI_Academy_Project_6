@@ -137,7 +137,7 @@ const NewTrip = () => {
         ></input>
    <br />
 <Dropdown  >
-  <Dropdown.Toggle variant="success" id="dropdown-basic" onChange={(e)=>{ update = e.target.value ;console.log("select",e.target.value)}}>
+  <Dropdown.Toggle variant="success" id="dropdown-basic" >
     Select Month
   </Dropdown.Toggle>
   <Dropdown.Menu>
