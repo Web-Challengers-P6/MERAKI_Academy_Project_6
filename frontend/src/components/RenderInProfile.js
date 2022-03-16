@@ -34,7 +34,7 @@ const RenderInTheProfile = () => {
       <div className="gridcontainer">
         {ownTrips.map((elem, index) => {
           return (
-            <div>
+            <div id="spacing">
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>
                   <p key={index}> Going to: {elem.TRIPto}</p>
