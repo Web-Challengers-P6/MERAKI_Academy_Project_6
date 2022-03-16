@@ -9,6 +9,8 @@ import NewTrip from "./components/add trip/addtrip";
 import Login from "./components/login/login";
 import MapContainer from "./components/map"
 import Footer from "./components/footer/footer"
+import Filter from "./components/filter/filter"
+
 const App = () => {
   return (
     <>
@@ -19,7 +21,7 @@ const App = () => {
         <Route path="/addTrip" element={<NewTrip />} />
         <Route path="/MapContainer" element={<MapContainer />} />
         <Route path="/login" element={<Login />} />
-        
+        <Route path="/trips" element={<Filter />} />
       </Routes>{" "}
       <Footer/>
     </>
