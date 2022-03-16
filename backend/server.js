@@ -20,12 +20,13 @@ const PORT = 5000;
 const { profileRouter } = require("./routes/profileR");
 const { fromAndToFilterRouter } = require("./routes/fromAndtoR");
 const { searchRouter } = require("./routes/searchR");
-const { tripRouter } = require("./routes/tripR");
+const { tripRouter, profileTripRender } = require("./routes/tripR");
 //Routes Middleware
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 app.use("/filter", fromAndToFilterRouter);
 app.use("/trip", tripRouter);
+app.use("/profileRender", profileTripRender);
 
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
