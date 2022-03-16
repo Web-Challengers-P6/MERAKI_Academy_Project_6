@@ -10,7 +10,7 @@ import "../all trips/alltrips.css";
 // const [tripsShower, settripsShower] = useState([]);
 const Trips = () => {
   const [tripsShower, settripsShower] = useState([]);
-
+  const [driverId, setDriverId] = useState(0);
   const AllTrips = async () => {
     try {
       const result = await axios.get("http://localhost:5000/trip/all");
@@ -44,6 +44,8 @@ const Trips = () => {
                     <p>Charge per passenger: {elem.Price} JD</p>
                   </Card.Text>
                 </Card.Body>{" "}
+                {/* use ternary if the userId !==driverId show the join button else dont show any thing */}
+                {}
                 <button>join trip</button>
               </Card>
               <br />
