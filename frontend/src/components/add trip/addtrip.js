@@ -12,7 +12,7 @@ const NewTrip = () => {
   const history = useNavigate();
 
   // const { token, isLoggedIn } = state;
-
+  const token = localStorage.getItem("token");
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
@@ -34,7 +34,6 @@ const NewTrip = () => {
       };
       const result = await axios.post(
         "http://localhost:5000/trip/createNewTrip",
-        trip,
         {
           tripName,
           TRIPfrom,
@@ -43,11 +42,13 @@ const NewTrip = () => {
           Price,
         },
         {
-          // headers: {
-          //   Authorization: `Bearer ${token}`,
-          // },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
+      console.log(token);
+      console.log(result);
       if (result.data.success) {
         setStatus(true);
 
@@ -55,6 +56,10 @@ const NewTrip = () => {
       }
     } catch (error) {
       if (!error.response.data.success) {
+        // console.log(token);
+
+        // console.log(result);
+
         setStatus(false);
         setMessage(error.response.data.message);
       }
