@@ -83,7 +83,7 @@ const deleteTrip = (req, res) => {
 
 const allTripsForTheDriver = (req, res) => {
   const userId = req.params.userId;
-  const query = `select * from trip where id =${userId}`;
+  const query = `select * from trip where driverId =${userId}`;
   connection.query(query, (err, result) => {
     if (err) {
       console.log(err);
