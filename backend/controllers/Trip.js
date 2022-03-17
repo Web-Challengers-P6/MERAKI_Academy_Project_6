@@ -15,12 +15,32 @@ const getAllTrip = (req, res) => {
     });
   });
 };
-
+let maxNumberOfSeats = 0;
 const creatNewTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip} = req.body;
+
+  const {
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numberOfSeats,
+    passengers, Datetrip, Timetrip
+  } = req.body;
   const driverId = req.token.userId;
-  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId, Datetrip, Timetrip];
+  seatsNumber = numberOfSeats;
+  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numberOfSeats,passengers,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?,?);`;
+  const data = [
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numberOfSeats,
+    passengers,
+    driverId,Datetrip,Timetrip
+  ];
+
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -105,4 +125,5 @@ module.exports = {
   updateTrip,
   deleteTrip,
   allTripsForTheDriver,
+  maxNumberOfSeats,
 };

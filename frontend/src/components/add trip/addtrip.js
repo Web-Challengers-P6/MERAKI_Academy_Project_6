@@ -5,13 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Button, Dropdown } from "react-bootstrap";
-import "../add trip/addtrip.css"
-
-
-
-
-
-
+import "../add trip/addtrip.css";
 
 //===============================================================
 
@@ -26,7 +20,7 @@ const NewTrip = () => {
   const [tripName, settripName] = useState("");
   const [TRIPfrom, setTRIPfrom] = useState("");
   const [TRIPto, setTRIPto] = useState("");
-  const [numbersite, setnumbersite] = useState();
+  const [numberOfSeats, setNumberOfSeats] = useState();
   const [Price, setPrice] = useState();
   const [Datetrip, setDatetrip] = useState("");
   const [Timetrip, setTimetrip] = useState("");
@@ -38,7 +32,7 @@ const NewTrip = () => {
         tripName,
         TRIPfrom,
         TRIPto,
-        numbersite,
+        numberOfSeats,
         Price,
         Datetrip, 
         Timetrip
@@ -49,10 +43,15 @@ const NewTrip = () => {
           tripName,
           TRIPfrom,
           TRIPto,
-          numbersite,
-          Price,  
+
+          numberOfSeats,
+          Price,
+
+
+       
           Datetrip, 
           Timetrip
+
         },
         {
           headers: {
@@ -118,7 +117,7 @@ const NewTrip = () => {
           placeholder="Please type here a number"
           className="form-control"
           id="formGroupExampleInput"
-          onChange={(e) => setnumbersite(e.target.value)}
+          onChange={(e) => setNumberOfSeats(e.target.value)}
         ></input>
         <br />
         <label for="inputEmail3" class="col-sm-2 col-form-label">
@@ -130,6 +129,7 @@ const NewTrip = () => {
           id="formGroupExampleInput"
           onChange={(e) => setPrice(e.target.value)}
         ></input>
+
    <br />
 
 
@@ -157,6 +157,7 @@ const NewTrip = () => {
         ></input>
         <br/>
         <Button type = "submit" variant="primary">Create New Trip</Button>
+
       </form>
       {status
         ? message && (
@@ -170,7 +171,6 @@ const NewTrip = () => {
               <p>{console.log(status)}</p>
             </div>
           )}
-         
     </>
   );
 };
