@@ -20,7 +20,22 @@ const RenderInTheProfile = () => {
   useEffect(() => {
     renderOwnTrips();
   }, []);
+  const rejectRider = (tripId, seats) => {
+    seats -= 1;
+    axios
+      .put(`http://localhost:5000/reject/${tripId}`, { seats })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const [softZero, setSoftZero] = useState(0);
   //what is left is to return the result using HOF
+  const rejectAndHide = (tripId) => {
+    axios.put(`http://localhost:5000/reject/${tripId}`);
+  };
   return (
     <>
       <br />
@@ -44,11 +59,21 @@ const RenderInTheProfile = () => {
                     <p> Start Point: {elem.TRIPfrom}</p>
                   </Card.Title>
                   <Card.Text>
-                    <p>Number of passengers: {elem.numbersite}</p>
+                    <p>Number of seats: {elem.numberOfSeats}</p>
+
+                    <p>Number of passengers: {elem.passengers}</p>
+
                     <p>Charge per passenger: {elem.Price} JD</p>
                   </Card.Text>
                 </Card.Body>{" "}
-                {/* <button>join trip</button> */}
+                <button>Accept</button>
+                <button
+                  onClick={() => {
+                    rejectRider(elem.id);
+                  }}
+                >
+                  Reject
+                </button>
               </Card>
               <br />
             </div>
