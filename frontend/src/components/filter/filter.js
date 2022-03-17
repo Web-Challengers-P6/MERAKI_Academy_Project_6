@@ -5,7 +5,6 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import "../all trips/alltrips.css";
-// import { joinTripFunc } from "../../../../backend/controllers/join";
 
 // -------------------------------------------------------------------------------
 // const [tripsShower, settripsShower] = useState([]);
@@ -13,6 +12,7 @@ const Filter = () => {
   const [filterTrips, setfilterTrips] = useState([]);
   const [TRIPfrom, setTRIPfrom] = useState("");
   const [TRIPto, setTRIPto] = useState("");
+  // const [seats, setSeats] = useState(0);
   // const [tripId, setTripId] = useState(0);
 
   const filteredTrips = async (e) => {
@@ -37,6 +37,7 @@ const Filter = () => {
   // const tripId = localStorage.setItem("tripId", tripId);
 
   const sendJoinRequest = (tripId) => {
+    console.log("it is working");
     axios
       .post(`http://localhost:5000/join/${tripId}`, {
         riderId,
@@ -50,6 +51,29 @@ const Filter = () => {
         console.log("nononononononononono");
       });
   };
+
+  const update = (id, seats) => {
+    seats += 1;
+    axios
+      .put(`http://localhost:5000/join/update/${id}`, {
+        seats,
+      })
+      .then((result) => {
+        console.log(result);
+        console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        filteredTrips();
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("nononononononononono");
+      });
+  };
+  // const seatsNumber = (id, seat) => {
+  //   setSeats(seat + 1);
+  //   console.log(seat);
+  //   update(id);
+  // };
+  const inc = () => {};
   return (
     <>
       <form onSubmit={filteredTrips}>
@@ -97,7 +121,17 @@ const Filter = () => {
                     <p>id: {elem.id}</p>
                   </Card.Text>
                 </Card.Body>
-                <button onClick={sendJoinRequest(elem.id)}>join trip</button>
+                <button
+                  onClick={() => {
+                    sendJoinRequest(elem.id);
+                    // seatsNumber(elem.id, elem.numbersite);
+                    // setSeats(elem.numbersite + 1);
+                    update(elem.id, elem.numbersite);
+                    // filteredTrips();
+                  }}
+                >
+                  join trip
+                </button>
               </Card>
               <br />
             </div>
