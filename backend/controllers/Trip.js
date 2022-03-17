@@ -17,11 +17,28 @@ const getAllTrip = (req, res) => {
 };
 let maxNumberOfSeats = 0;
 const creatNewTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite } = req.body;
+  const {
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numberOfSeats,
+    passengers,
+  } = req.body;
   const driverId = req.token.userId;
-  numberOfSeats = numbersite;
-  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId) VALUES (?,?,?,?,?,?,?);`;
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId];
+  seatsNumber = numberOfSeats;
+  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numberOfSeats,passengers,driverId) VALUES (?,?,?,?,?,?,?,?);`;
+  const data = [
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numberOfSeats,
+    passengers,
+    driverId,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
