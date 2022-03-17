@@ -1,8 +1,25 @@
-import React from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css"
+import React, { useRef } from 'react';
+import emailjs from "emailjs-com";
+
 const Footer = () => {
+    const form = useRef();
+  
+    const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs.sendForm('service_iamad6s', 'template_5zh3yev', form.current
+      , 'user_424QRbyntfeicOfcjX99p')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
+  
+
   return (
 <div class="d-flex flex-column h-100">
 
@@ -49,9 +66,12 @@ const Footer = () => {
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-3">Newsletter</h5>
                 <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <form action="#">
+                <form action="#" ref={form} onSubmit={sendEmail}>
                     <div class="input-group mb-3">
-                        <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+                        <input class="form-control" type="text" placeholder='Please write your name' aria-label="Recipient's username" aria-describedby="button-addon2"/>
+
+                        <input class="form-control" type="text" placeholder='Please write your email' aria-label="Recipient's username" aria-describedby="button-addon2"/>
+                        <input class="form-control" type="text" placeholder='Please write your query' aria-label="Recipient's username" aria-describedby="button-addon2"/>
                         <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </form>
