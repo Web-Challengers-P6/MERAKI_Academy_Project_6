@@ -22,6 +22,8 @@ const NewTrip = () => {
   const [TRIPto, setTRIPto] = useState("");
   const [numberOfSeats, setNumberOfSeats] = useState();
   const [Price, setPrice] = useState();
+  const [Datetrip, setDatetrip] = useState("");
+  const [Timetrip, setTimetrip] = useState("");
 
   const createNewTrip = async (e) => {
     e.preventDefault();
@@ -32,6 +34,8 @@ const NewTrip = () => {
         TRIPto,
         numberOfSeats,
         Price,
+        Datetrip, 
+        Timetrip
       };
       const result = await axios.post(
         "http://localhost:5000/trip/createNewTrip",
@@ -39,8 +43,15 @@ const NewTrip = () => {
           tripName,
           TRIPfrom,
           TRIPto,
+
           numberOfSeats,
           Price,
+
+
+       
+          Datetrip, 
+          Timetrip
+
         },
         {
           headers: {
@@ -80,17 +91,6 @@ const NewTrip = () => {
       <br />
       <form onSubmit={createNewTrip}>
         <label for="inputEmail3" class="col-sm-2 col-form-label">
-          Trip name
-        </label>
-        <input
-          type="text"
-          placeholder="Please type here"
-          className="form-control"
-          id="formGroupExampleInput"
-          onChange={(e) => settripName(e.target.value)}
-        />
-        <br />
-        <label for="inputEmail3" class="col-sm-2 col-form-label">
           Trip from
         </label>
         <input
@@ -129,89 +129,35 @@ const NewTrip = () => {
           id="formGroupExampleInput"
           onChange={(e) => setPrice(e.target.value)}
         ></input>
-        <br />
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Select Month
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item>Jan</Dropdown.Item>
-            <Dropdown.Item>Feb</Dropdown.Item>
-            <Dropdown.Item>Mar</Dropdown.Item>
-            <Dropdown.Item>April</Dropdown.Item>
-            <Dropdown.Item>May</Dropdown.Item>
-            <Dropdown.Item>June</Dropdown.Item>
-            <Dropdown.Item>July</Dropdown.Item>
-            <Dropdown.Item>August</Dropdown.Item>
-            <Dropdown.Item>Sep</Dropdown.Item>
-            <Dropdown.Item>Oct</Dropdown.Item>
-            <Dropdown.Item>Nov</Dropdown.Item>
-            <Dropdown.Item>Dec</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <br />
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Select Day
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item>1</Dropdown.Item>
-            <Dropdown.Item>2</Dropdown.Item>
-            <Dropdown.Item>3</Dropdown.Item>
-            <Dropdown.Item>4</Dropdown.Item>
-            <Dropdown.Item>5</Dropdown.Item>
-            <Dropdown.Item>6</Dropdown.Item>
-            <Dropdown.Item>7</Dropdown.Item>
-            <Dropdown.Item>8</Dropdown.Item>
-            <Dropdown.Item>9</Dropdown.Item>
-            <Dropdown.Item>10</Dropdown.Item>
-            <Dropdown.Item>11</Dropdown.Item>
-            <Dropdown.Item>12</Dropdown.Item>
-            <Dropdown.Item>13</Dropdown.Item>
-            <Dropdown.Item>14</Dropdown.Item>
-            <Dropdown.Item>15</Dropdown.Item>
-            <Dropdown.Item>16</Dropdown.Item>
-            <Dropdown.Item>17</Dropdown.Item>
-            <Dropdown.Item>18</Dropdown.Item>
-            <Dropdown.Item>19</Dropdown.Item>
-            <Dropdown.Item>20</Dropdown.Item>
-            <Dropdown.Item>21</Dropdown.Item>
-            <Dropdown.Item>22</Dropdown.Item>
-            <Dropdown.Item>23</Dropdown.Item>
-            <Dropdown.Item>24</Dropdown.Item>
-            <Dropdown.Item>25</Dropdown.Item>
-            <Dropdown.Item>26</Dropdown.Item>
-            <Dropdown.Item>27</Dropdown.Item>
-            <Dropdown.Item>28</Dropdown.Item>
-            <Dropdown.Item>29</Dropdown.Item>
-            <Dropdown.Item>30</Dropdown.Item>
-            <Dropdown.Item>31</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <br />
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Select Year
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">2022</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">2023</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2024</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2024</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2025</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2026</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2027</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2028</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2029</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">2030</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+
+   <br />
+
+
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Day (Day/month) example : 18/3
+        </label>
+        <input
+          placeholder="Please type here the date of the trip"
+          className="form-control"
+          id="formGroupExampleInput"
+          type="date"
+          onChange={(e) => setDatetrip(e.target.value)}
+        ></input>
 
         <br />
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Time (Hour:Minute AM or PM) example: 3:30 PM
+        </label>
+        <input
+          placeholder="Please type here the time of the trip"
+          className="form-control"
+          id="formGroupExampleInput"
+          type="time"
+          onChange={(e) => setTimetrip(e.target.value)}
+        ></input>
+        <br/>
+        <Button type = "submit" variant="primary">Create New Trip</Button>
 
-        <Button type="submit" variant="primary">
-          Create New Trip
-        </Button>
       </form>
       {status
         ? message && (

@@ -1,9 +1,11 @@
 #formGroupExampleInput{
     text-align: center;
-    width: 50%;
+    width: 30%;
     align-items: center;
     justify-content: center;
-    margin-left: 25%;
+    margin-left:35%;
+    color: black;
+    background-color: azure;
 }
 
 form{
@@ -12,8 +14,8 @@ form{
   
 
 }
+
 input{
     align-items: center;
     justify-content: center;
-
 }

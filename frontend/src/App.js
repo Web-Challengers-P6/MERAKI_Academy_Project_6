@@ -7,8 +7,16 @@ import NavBar from "./components/Navbar";
 import Profile from "./components/Profile";
 import NewTrip from "./components/add trip/addtrip";
 import Login from "./components/login/login";
-import MapContainer from "./components/map";
-import Footer from "./components/footer/footer";
+
+
+
+import MapContainer from "./components/map"
+import Footer from "./components/footer/footer"
+
+import Register from "./components/regester/regester"
+
+import Filter from "./components/filter/filter"
+
 const App = () => {
   return (
     <>
@@ -20,6 +28,13 @@ const App = () => {
         <Route path="/addTrip" element={<NewTrip />} />
         <Route path="/MapContainer" element={<MapContainer />} />
         <Route path="/login" element={<Login />} />
+
+
+        <Route path="/Register" element={<Register />} />
+        
+
+       
+
       </Routes>{" "}
       <Footer />
     </>
