@@ -14,13 +14,13 @@ const NavBar = () => {
     return { isLoggedIn: state.loginReducer.isLoggedIn };
   });
   const dispatch = useDispatch();
-
+  const token = localStorage.getItem("token");
   const history = useNavigate();
   return (
     <>
       <Navbar id="position" bg="dark" variant="dark">
         <Container>
-          {state.isLoggedIn ? (
+          {token ? (
             <>
               <Navbar.Brand id="logo" href="home">
                 PickUP

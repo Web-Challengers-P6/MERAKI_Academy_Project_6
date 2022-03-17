@@ -17,7 +17,6 @@ const getAllTrip = (req, res) => {
 };
 let maxNumberOfSeats = 0;
 const creatNewTrip = (req, res) => {
-
   const {
     tripName,
     TRIPfrom,
@@ -25,28 +24,30 @@ const creatNewTrip = (req, res) => {
     Image,
     Price,
     numberOfSeats,
-    passengers, Datetrip, Timetrip
+    passengers,
+    Datetrip,
+    Timetrip,
   } = req.body;
   const driverId = req.token.userId;
-  seatsNumber = numberOfSeats;
-  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numberOfSeats,passengers,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?,?);`;
+  // seatsNumber = numberOfSeats;
+  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Price,numberOfSeats,passengers,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
   const data = [
     tripName,
     TRIPfrom,
     TRIPto,
-    Image,
     Price,
     numberOfSeats,
     passengers,
-    driverId,Datetrip,Timetrip
+    driverId,
+    Datetrip,
+    Timetrip,
   ];
-
 
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
         success: false,
-        massage: "Server error",
+        massage: "Server error xxxxxxxxxxxxxxxxxxxxxxxx",
         err: err,
       });
     } else {
@@ -59,11 +60,29 @@ const creatNewTrip = (req, res) => {
   });
 };
 const updateTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip } = req.body;
+  const {
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numbersite,
+    Datetrip,
+    Timetrip,
+  } = req.body;
 
   const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=?,Datetrip=?, Timetrip=? WHERE id=?; `;
   //Image=?,
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip];
+  const data = [
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numbersite,
+    Datetrip,
+    Timetrip,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
