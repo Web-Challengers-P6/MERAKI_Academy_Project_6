@@ -67,10 +67,7 @@ const Footer = () => {
                 <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                 <form action="#" ref={form} onSubmit={sendEmail}>
                     <div class="input-group mb-3">
-                        <input class="form-control" type="text" placeholder='Please write your name' aria-label="Recipient's username" aria-describedby="button-addon2"/>
 
-                        <input class="form-control" type="text" placeholder='Please write your email' aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                        <input class="form-control" type="text" placeholder='Please write your query' aria-label="Recipient's username" aria-describedby="button-addon2"/>
                         <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </form>
