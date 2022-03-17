@@ -67,7 +67,8 @@ const Filter = () => {
             <div>
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>
-                  <p> Going to: {elem.TRIPto}</p>
+                  <p> Going to: {elem.TRIPto}  </p>
+                  <p>From: {elem.TRIPfrom}</p>
                 </Card.Header>
                 <Card.Body>
                   <Card.Title>
@@ -76,6 +77,8 @@ const Filter = () => {
                   <Card.Text>
                     <p>Number of passengers: {elem.numbersite}</p>
                     <p>Charge per passenger: {elem.Price} JD</p>
+                    <p>Date of trip: {elem.Datetrip} </p>
+                    <p>Time of trip: {elem.Timetrip} </p>
                   </Card.Text>
                 </Card.Body>
               </Card>
