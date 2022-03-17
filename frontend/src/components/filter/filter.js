@@ -5,6 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import "../all trips/alltrips.css";
+// import { joinTripFunc } from "../../../../backend/controllers/join";
 
 // -------------------------------------------------------------------------------
 // const [tripsShower, settripsShower] = useState([]);
@@ -12,6 +13,7 @@ const Filter = () => {
   const [filterTrips, setfilterTrips] = useState([]);
   const [TRIPfrom, setTRIPfrom] = useState("");
   const [TRIPto, setTRIPto] = useState("");
+  // const [tripId, setTripId] = useState(0);
 
   const filteredTrips = async (e) => {
     e.preventDefault();
@@ -25,12 +27,29 @@ const Filter = () => {
 
       if (result.data.success) {
         setfilterTrips(result.data.result);
+        // setTripId(result.data.result.id);
       } else throw Error;
     } catch (error) {
       console.log(error);
     }
   };
+  const riderId = localStorage.getItem("User");
+  // const tripId = localStorage.setItem("tripId", tripId);
 
+  const sendJoinRequest = (tripId) => {
+    axios
+      .post(`http://localhost:5000/join/${tripId}`, {
+        riderId,
+      })
+      .then((result) => {
+        console.log(result);
+        console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("nononononononononono");
+      });
+  };
   return (
     <>
       <form onSubmit={filteredTrips}>
@@ -75,9 +94,10 @@ const Filter = () => {
                   <Card.Text>
                     <p>Number of passengers: {elem.numbersite}</p>
                     <p>Charge per passenger: {elem.Price} JD</p>
+                    <p>id: {elem.id}</p>
                   </Card.Text>
                 </Card.Body>
-                <button>join trip</button>
+                <button onClick={sendJoinRequest(elem.id)}>join trip</button>
               </Card>
               <br />
             </div>
