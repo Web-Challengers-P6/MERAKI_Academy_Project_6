@@ -6,6 +6,7 @@ let maxNumberOfSeats = require("../controllers/Trip");
 let numberOfSeats = 0;
 // numberOfSeats = 0;
 const joinTripFunc = (req, res) => {
+  console.log("wwwwwwwwwwwwwwwwwwwwwwww", maxNumberOfSeats);
   const tripId = req.params.tripId;
   const riderId = req.body.riderId;
   // if (tripId && riderId) {
@@ -13,7 +14,7 @@ const joinTripFunc = (req, res) => {
   const passengers = [];
   passengers.push(riderId);
   //   console.log(passengers);
-  const query = `update trip set numbersite=${numberOfSeats} where id=${tripId}`;
+  const query = `update trip set passengers=${numberOfSeats} where id=${tripId}`;
   // const data = [tripId, riderId];
   connection.query(query, (err, result) => {
     if (err) {
@@ -42,7 +43,7 @@ const joinTripFunc = (req, res) => {
 const update = (req, res) => {
   const id = req.params.id;
   let seats = req.body.seats;
-  const query = `update trip set numbersite=${seats} where id=${id}`;
+  const query = `update trip set numberOfSeats=${seats} where id=${id}`;
   connection.query(query, (err, result) => {
     if (err) {
       console.log(err);
