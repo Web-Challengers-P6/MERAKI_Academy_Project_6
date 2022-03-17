@@ -34,8 +34,8 @@ const NewTrip = () => {
         TRIPto,
         numberOfSeats,
         Price,
-        Datetrip, 
-        Timetrip
+        Datetrip,
+        Timetrip,
       };
       const result = await axios.post(
         "http://localhost:5000/trip/createNewTrip",
@@ -43,15 +43,10 @@ const NewTrip = () => {
           tripName,
           TRIPfrom,
           TRIPto,
-
           numberOfSeats,
           Price,
-
-
-       
-          Datetrip, 
-          Timetrip
-
+          Datetrip,
+          Timetrip,
         },
         {
           headers: {
@@ -130,10 +125,9 @@ const NewTrip = () => {
           onChange={(e) => setPrice(e.target.value)}
         ></input>
 
-   <br />
+        <br />
 
-
-   <label for="inputEmail3" class="col-sm-2 col-form-label">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">
           Day (Day/month) example : 18/3
         </label>
         <input
@@ -145,7 +139,7 @@ const NewTrip = () => {
         ></input>
 
         <br />
-   <label for="inputEmail3" class="col-sm-2 col-form-label">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">
           Time (Hour:Minute AM or PM) example: 3:30 PM
         </label>
         <input
@@ -155,9 +149,10 @@ const NewTrip = () => {
           type="time"
           onChange={(e) => setTimetrip(e.target.value)}
         ></input>
-        <br/>
-        <Button type = "submit" variant="primary">Create New Trip</Button>
-
+        <br />
+        <Button type="submit" variant="primary">
+          Create New Trip
+        </Button>
       </form>
       {status
         ? message && (
