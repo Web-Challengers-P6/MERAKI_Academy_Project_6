@@ -17,10 +17,10 @@ const getAllTrip = (req, res) => {
 };
 
 const creatNewTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite } = req.body;
+  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip} = req.body;
   const driverId = req.token.userId;
-  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId) VALUES (?,?,?,?,?,?,?);`;
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId];
+  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
+  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId, Datetrip, Timetrip];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -30,7 +30,6 @@ const creatNewTrip = (req, res) => {
         err: err,
       });
     } else {
-      console.log("asdnlaskdn;askda;sd");
       res.status(200).json({
         success: true,
         massage: "Success Trip created",
@@ -40,11 +39,11 @@ const creatNewTrip = (req, res) => {
   });
 };
 const updateTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite } = req.body;
+  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip } = req.body;
 
-  const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=? WHERE id=?; `;
+  const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=?,Datetrip=?, Timetrip=? WHERE id=?; `;
   //Image=?,
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite];
+  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -72,7 +71,7 @@ const deleteTrip = (req, res) => {
       console.log(err.message);
       res.status(500).json({
         success: false,
-        message: "somthing went wrong while deleting this trip",
+        message: "something went wrong while deleting this trip",
       });
     } else {
       console.log(result);
