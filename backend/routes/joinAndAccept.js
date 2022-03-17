@@ -3,6 +3,6 @@ const { joinTripFunc } = require("../controllers/join");
 
 // main route is /join
 const joinRouter = express.Router();
-joinRouter.post("/", joinTripFunc);
+joinRouter.post("/:tripId", joinTripFunc);
 
 module.exports = { joinRouter };
