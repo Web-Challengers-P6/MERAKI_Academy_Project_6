@@ -24,6 +24,7 @@ const App = () => {
         <Route path="/addTrip" element={<NewTrip />} />
         <Route path="/MapContainer" element={<MapContainer />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/trips" element={<Filter />} />
 
         <Route path="/Register" element={<Register />} />
         
