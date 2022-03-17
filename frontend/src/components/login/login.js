@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 // import Swal from "sweetalert2";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -44,7 +46,8 @@ const Login = () => {
         setMessage("true");
         localStorage.setItem("User", res.data.results.id);
         localStorage.setItem("token", res.data.token);
-setStatus(true)
+        setStatus(true);
+        console.log(status)
         dispatch(loginReducer(res.data.token));
       } else throw Error;
     } catch (error) {
@@ -54,134 +57,67 @@ setStatus(true)
       setMessage("Error happened while Login, please try again");
     }
   };
-  const addNewUser = async (e) => {
-    e.preventDefault();
-    try {
-      const result = await axios.post("http://localhost:5000/users", {
-        Username,
-        Phone_number,
-        email,
-        Password,
-      });
-      console.log(result);
-      if (result.data.success) {
-        setStatus(true);
-        setMessage("The user has been created successfully");
-      } else throw Error;
-    } catch (error) {
-      setStatus(false);
-      if (error.response && error.response.data) {
-        return setMessage(error.response.data.message);
-      }
-      setMessage("Error happened while register, please try again");
-    }
-  };
-
+  console.log(state.isLoggedIn);
   useEffect(() => {
     if (state.isLoggedIn) {
-      console.log(state.isLoggedIn)
-      history("/Home");
-    } else history("/login");
+      console.log(state.isLoggedIn);
+      history("/home");
+    } else{  history("/login");}
   }, [state.isLoggedIn]);
 
-  const signUpButton = document.getElementById("signUp");
-  const signInButton = document.getElementById("signIn");
-  const container = document.getElementById("container");
-
-  // signUpButton.addEventListener('click', () => {
-  //   container.classList.add("right-panel-active");
-  // });
-
-  // signInButton.addEventListener('click', () => {
-  //   container.classList.remove("right-panel-active");
-  // });
   return (
     <>
-      <div class="container" id="container">
-        <div class="form-container sign-up-container">
-          <form action="#" onSubmit={addNewUser}>
-            <h1>Create Account</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+              <div class="text-center mt-4">
+                <h1 class="h2">Get started</h1>
+                <p class="lead">
+                  Start creating the best possible user experience for you
+                  customers.
+                </p>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-4">
+                    <form onSubmit={loginUser}>
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input
+                          class="form-control form-control-lg"
+                          onChange={(e) => setEmail(e.target.value)}
+                          type="email"
+                          name="email"
+                          placeholder="Enter your email"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input
+                          class="form-control form-control-lg"
+                          onChange={(e) => setPassword(e.target.value)}
+                          type="password"
+                          name="password"
+                          placeholder="Enter password"
+                        />
+                      </div>
+                      <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-lg btn-primary">
+                          Login
+                        </button>
+                        <br />
+                        <a href="/Register"> SignUp</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-            <span>or use your email for registration</span>
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button>Sign Up</button>
-          </form>
+          </div>
         </div>
-        <div class="form-container sign-in-container">
-          <form action="#" onSubmit={loginUser}>
-            <h1>Sign in</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <span>or use your account</span>
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
-          </form>
-        </div>
-        {/* <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
-                To keep connected with us please login with your personal info
-              </p>
-              <button class="ghost" id="signIn">
-                Sign In
-              </button>
-            </div>
-            <div class="overlay-panel overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button class="ghost" id="signUp">
-                Sign Up
-              </button>
-            </div>
-          </div> */}
-        {/* </div> */}
       </div>
-      <footer></footer>{" "}
     </>
   );
 };

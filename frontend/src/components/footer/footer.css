@@ -17,12 +17,12 @@
   }
   
   .form-control {
-    background: #1282f1;
+    background: #b7bec5;
     border-color: #545454;
   }
   
   .form-control:focus {
-    background: #212529;
+    background: #0c0c0c;
   }
   
   footer {
