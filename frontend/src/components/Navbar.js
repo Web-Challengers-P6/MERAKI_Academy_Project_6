@@ -34,11 +34,8 @@ const NavBar = () => {
           <Nav.Link className="navLinks" href="addTrip">
             Add Trip
           </Nav.Link>
-          <Nav.Link className="navLinks" href="filter">
-            Filter
-          </Nav.Link>
-          <Nav.Link className="navLinks" href="contactUs">
-            Contact Us
+          <Nav.Link className="navLinks" href="trips">
+            Book Trip
           </Nav.Link>
           <Nav.Link className="navLinks" href="profile">
             Profile
