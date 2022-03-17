@@ -23,7 +23,7 @@ driverId INT,
 Price INT,
 passengers INT DEFAULT 0,
 numberOfSeats INT DEFAULT 0,
-DatetripDate VARchar (255),
+Datetrip VARchar (255),
 Timetrip VARchar (255),
 
 Category VARchar (255),
