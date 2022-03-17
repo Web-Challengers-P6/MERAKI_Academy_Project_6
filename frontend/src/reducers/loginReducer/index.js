@@ -1,6 +1,7 @@
 const initialState = {
   token: localStorage.getItem("token") || "",
-  isLoggedIn: localStorage.getItem("token") ? true : false,
+  isLoggedIn: localStorage.getItem("token") ? true  : false,
+  
 };
 
 // Reducer

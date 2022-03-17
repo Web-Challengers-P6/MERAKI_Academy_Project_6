@@ -132,6 +132,8 @@ const NewTrip = () => {
           onChange={(e) => setPrice(e.target.value)}
         ></input>
    <br />
+
+
    <label for="inputEmail3" class="col-sm-2 col-form-label">
           Day (Day/month) example : 18/3
         </label>
@@ -142,6 +144,7 @@ const NewTrip = () => {
           type="date"
           onChange={(e) => setDatetrip(e.target.value)}
         ></input>
+
         <br />
    <label for="inputEmail3" class="col-sm-2 col-form-label">
           Time (Hour:Minute AM or PM) example: 3:30 PM
