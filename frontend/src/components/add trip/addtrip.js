@@ -28,6 +28,8 @@ const NewTrip = () => {
   const [TRIPto, setTRIPto] = useState("");
   const [numbersite, setnumbersite] = useState();
   const [Price, setPrice] = useState();
+  const [Datetrip, setDatetrip] = useState("");
+  const [Timetrip, setTimetrip] = useState("");
 
   const createNewTrip = async (e) => {
     e.preventDefault();
@@ -38,6 +40,8 @@ const NewTrip = () => {
         TRIPto,
         numbersite,
         Price,
+        Datetrip, 
+        Timetrip
       };
       const result = await axios.post(
         "http://localhost:5000/trip/createNewTrip",
@@ -46,7 +50,9 @@ const NewTrip = () => {
           TRIPfrom,
           TRIPto,
           numbersite,
-          Price,
+          Price,  
+          Datetrip, 
+          Timetrip
         },
         {
           headers: {
@@ -85,17 +91,7 @@ const NewTrip = () => {
     <>
       <br />
       <form onSubmit={createNewTrip}>
-        <label for="inputEmail3" class="col-sm-2 col-form-label">
-          Trip name
-        </label>
-        <input
-          type="text"
-          placeholder="Please type here"
-          className="form-control"
-          id="formGroupExampleInput"
-          onChange={(e) => settripName(e.target.value)}
-        />
-        <br />
+
         <label for="inputEmail3" class="col-sm-2 col-form-label">
           Trip from
         </label>
@@ -136,6 +132,28 @@ const NewTrip = () => {
           onChange={(e) => setPrice(e.target.value)}
         ></input>
    <br />
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Day (Day/month) example : 18/3
+        </label>
+        <input
+          placeholder="Please type here the date of the trip"
+          className="form-control"
+          id="formGroupExampleInput"
+          type="date"
+          onChange={(e) => setDatetrip(e.target.value)}
+        ></input>
+        <br />
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Time (Hour:Minute AM or PM) example: 3:30 PM
+        </label>
+        <input
+          placeholder="Please type here the time of the trip"
+          className="form-control"
+          id="formGroupExampleInput"
+          type="time"
+          onChange={(e) => setTimetrip(e.target.value)}
+        ></input>
+        <br/>
         <Button type = "submit" variant="primary">Create New Trip</Button>
       </form>
       {status
