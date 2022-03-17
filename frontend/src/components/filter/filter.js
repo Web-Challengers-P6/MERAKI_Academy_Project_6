@@ -106,7 +106,7 @@ const Filter = () => {
       <div className="gridcontainer">
         {filterTrips.map((elem, index) => {
           return (
-            <div>
+            <div key={index}>
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>
                   <p> Going to: {elem.TRIPto}</p>
@@ -116,7 +116,9 @@ const Filter = () => {
                     <p> Start Point: {elem.TRIPfrom}</p>
                   </Card.Title>
                   <Card.Text>
-                    <p>Number of passengers: {elem.numbersite}</p>
+                    <p>Number of seats: {elem.numberOfSeats}</p>
+                    <p>Number of passengers: {elem.passengers}</p>
+
                     <p>Charge per passenger: {elem.Price} JD</p>
                     <p>id: {elem.id}</p>
                   </Card.Text>
