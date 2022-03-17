@@ -18,6 +18,46 @@ const NavBar = () => {
   const history = useNavigate();
   return (
     <>
+
+    <Navbar bg="dark" variant="dark">
+       
+      <Container>
+      {state.isLoggedIn ? (
+        <> 
+        <Navbar.Brand id="logo" href="home">
+          PickUP
+        </Navbar.Brand>
+        <Nav className="me-auto">
+
+          <Nav.Link className="navLinks" href="home">
+            Home
+          </Nav.Link>
+          <Nav.Link className="navLinks" href="addTrip">
+            Add Trip
+          </Nav.Link>
+          <Nav.Link className="navLinks" href="trips">
+            Book Trip
+          </Nav.Link>
+          <Nav.Link className="navLinks" href="profile">
+            Profile
+          </Nav.Link>
+          <Nav.Link className="navLinks"  onClick={() => {
+                dispatch(logout());
+                localStorage.clear();
+                history("/login");
+              }} href="">
+            logout
+          </Nav.Link>
+          <Nav.Link className="navLinks" href="MapContainer">
+map          </Nav.Link>
+</Nav>
+</>
+) : ( <>
+          <Nav.Link className="navLinks" href="login">
+            Login
+          </Nav.Link>
+          </>
+
       <Navbar id="position" bg="dark" variant="dark">
         <Container>
           {token ? (
@@ -63,6 +103,7 @@ const NavBar = () => {
                 Login
               </Nav.Link>
             </>
+
           )}
         </Container>
       </Navbar>

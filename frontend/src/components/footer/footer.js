@@ -47,13 +47,16 @@ const Footer = () => {
             <div class="col-lg-4 col-md-6">
               <h5 class="h1 text-white">PickUP</h5>
               <p class="small text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt.
+
+               Developed by Meraki C4 A4 group
+
               </p>
               <p class="small text-muted mb-0">
                 &copy; Copyrights. All rights reserved.{" "}
                 <a class="text-primary" href="#">
-                  merakeacademy
+
+                Meraki C4 A4
+
                 </a>
               </p>
             </div>
@@ -83,7 +86,12 @@ const Footer = () => {
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div> */}
+            
             <div class="col-lg-4 col-md-6">
+
+                <div class="input-group mb-3">
+                  <div>
+
 
               <h5 class="text-white mb-3">Newsletter</h5>
               <p class="small text-muted">
@@ -92,27 +100,52 @@ const Footer = () => {
               </p>
               <form action="#" ref={form} onSubmit={sendEmail}>
                 <div class="input-group mb-3">
+
                   <input
                     class="form-control"
                     type="text"
                     placeholder="Please write your name"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
+
+                  ></input>
+                  </div>
+                  <div>
+
                   />
-                  <input
+
+              <input
                     class="form-control"
                     type="text"
                     placeholder="Please write your email"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
-                  <input
+
+                  </div>
+                  <div>
+                  <textarea
+                  id="areatext"
+
                     class="form-control"
                     type="text"
                     placeholder="Please write your query"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
+
+                  </div>
+                <div>
+                  <button
+                    class="btn btn-primary"
+                    id="button-addon2"
+                    type="submit"
+                  >Send
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                  </div>
+                </div>
+              
                   <button
                     class="btn btn-primary"
                     id="button-addon2"
@@ -131,6 +164,7 @@ const Footer = () => {
                         <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </form>
+
 
             </div>
           </div>
