@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     margin-left:35%;
-    color: white;
+    color: black;
+    background-color: azure;
 }
 
 form{
@@ -13,8 +14,8 @@ form{
   
 
 }
+
 input{
     align-items: center;
     justify-content: center;
-
 }
