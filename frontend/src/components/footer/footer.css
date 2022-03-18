@@ -45,15 +45,25 @@ html {
 #button-addon2 {
   width: 100px;
   height: 40px;
-  margin-left: 70px;
   margin-top: 15px;
+  margin-left:65%;
 }
 
 .form-control {
   width: 100%;
   margin-top: 2%;
+  margin-left: 100px;
 }
 
-#areatext {
-  width: 110%;
+#footerinputcolor{
+  outline: none;
+  text-align: center;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background-color: #f2f3f8;
+
 }
+
+

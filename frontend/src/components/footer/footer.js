@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
+
 
 const Footer = () => {
   const form = useRef();
@@ -19,7 +21,7 @@ const Footer = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          console.log(result);
         },
         (error) => {
           console.log(error.text);
@@ -90,18 +92,11 @@ const Footer = () => {
             <div class="col-lg-4 col-md-6">
 
                 <div class="input-group mb-3">
+                <form ref={form} onSubmit={sendEmail}>
                   <div>
 
-
-              <h5 class="text-white mb-3">Newsletter</h5>
-              <p class="small text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
-              <form action="#" ref={form} onSubmit={sendEmail}>
-                <div class="input-group mb-3">
-
                   <input
+                  id= "footerinputcolor"
                     class="form-control"
                     type="text"
                     placeholder="Please write your name"
@@ -112,9 +107,9 @@ const Footer = () => {
                   </div>
                   <div>
 
-                  />
+                  <input
+                  id= "footerinputcolor"
 
-              <input
                     class="form-control"
                     type="text"
                     placeholder="Please write your email"
@@ -125,7 +120,8 @@ const Footer = () => {
                   </div>
                   <div>
                   <textarea
-                  id="areatext"
+
+                  id="footerinputcolor"
 
                     class="form-control"
                     type="text"
@@ -140,31 +136,21 @@ const Footer = () => {
                     class="btn btn-primary"
                     id="button-addon2"
                     type="submit"
+                    onClick={()=>{Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Your message has been sent successfully, we will reach you soon',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+                    }}
                   >Send
                     <i class="fas fa-paper-plane"></i>
                   </button>
+                  
                   </div>
+                  </form>
                 </div>
-              
-                  <button
-                    class="btn btn-primary"
-                    id="button-addon2"
-                    type="button"
-                  >
-                    <i class="fas fa-paper-plane"></i>
-                  </button>
-                </div>
-              </form>
-
-                <h5 class="text-white mb-3">Newsletter</h5>
-                <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <form action="#" ref={form} onSubmit={sendEmail}>
-                    <div class="input-group mb-3">
-
-                        <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </form>
-
 
             </div>
           </div>

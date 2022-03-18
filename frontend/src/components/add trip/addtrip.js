@@ -5,7 +5,14 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Button, Dropdown } from "react-bootstrap";
-import "../add trip/addtrip.css";
+
+import "../add trip/addtrip.css"
+import Swal from "sweetalert2";
+
+
+
+
+
 
 //===============================================================
 
@@ -137,8 +144,10 @@ const NewTrip = () => {
 
         <br />
 
-        <label for="inputEmail3" class="col-sm-2 col-form-label">
-          Day (Day/month) example : 18/3
+
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Day 
+
         </label>
         <input
           placeholder="Please type here the date of the trip"
@@ -149,8 +158,10 @@ const NewTrip = () => {
         ></input>
 
         <br />
-        <label for="inputEmail3" class="col-sm-2 col-form-label">
-          Time (Hour:Minute AM or PM) example: 3:30 PM
+
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Time
+
         </label>
         <input
           placeholder="Please type here the time of the trip"
@@ -159,23 +170,21 @@ const NewTrip = () => {
           type="time"
           onChange={(e) => setTimetrip(e.target.value)}
         ></input>
-        <br />
-        <Button type="submit" variant="primary">
-          Create New Trip
-        </Button>
+
+        <br/>
+        <Button onClick={()=>{Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Trip created successfully',
+  showConfirmButton: false,
+  timer: 1500
+})
+}} type = "submit" variant="primary">Create New Trip</Button>
+        
       </form>
-      {status
-        ? message && (
-            <div className="SuccessMessage">
-              {message} && <p>{console.log(status)}</p>
-            </div>
-          )
-        : message && (
-            <div className="ErrorMessage">
-              {message}
-              <p>{console.log(status)}</p>
-            </div>
-          )}
+      
+         
+
     </>
   );
 };

@@ -38,15 +38,13 @@ const RenderInTheProfile = () => {
   };
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
+      
       <div id="MyTrips">
         <h4>My trips</h4>
       </div>
 
-      <div className="gridcontainer">
+      <div className="gridcontainer"
+      id="profilegrid">
         {ownTrips.map((elem, index) => {
           return (
             <div id="spacing">

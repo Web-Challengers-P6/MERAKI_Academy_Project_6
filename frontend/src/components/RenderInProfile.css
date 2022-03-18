@@ -1,6 +1,43 @@
-#MyTrips {
-  text-align: center;
+#profilegrid {
+ 
+  display: grid;
+  grid-template-columns: auto;
+ 
 }
+
 #spacing {
   padding-left: 1rem;
+}
+
+#profileinput{
+outline: none;
+text-align: center;
+width: 100%;
+align-items: center;
+justify-content: center;
+color: black;
+background-color: azure;
+margin-left: 0;
+}
+
+gridcontainer{
+  margin-left: 0%;
+}
+
+#MyTrips{
+  margin-left: 40%;
+}
+
+
+#profileinfo{
+  margin-left:200px;
+}
+
+#profilename{
+  margin-left: 150px;
+}
+
+#profilecontainer{
+  background-color: red;
+  color-scheme: red;
 }
