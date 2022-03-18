@@ -26,4 +26,8 @@ const reject = (req, res) => {
     }
   });
 };
+const hideCard = (req, res) => {
+  const tripId = req.params.tripId;
+  const query=`update `
+};
 module.exports = { reject };

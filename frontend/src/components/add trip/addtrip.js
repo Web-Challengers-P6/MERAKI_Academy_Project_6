@@ -24,7 +24,18 @@ const NewTrip = () => {
   const [Price, setPrice] = useState();
   const [Datetrip, setDatetrip] = useState("");
   const [Timetrip, setTimetrip] = useState("");
-
+  const [driverId, setDriverId] = useState();
+  const getDriverInfo = (driverId) => {
+    console.log(driverId);
+    axios
+      .post(`http://localhost:5000/trip/driverId/${driverId}`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const createNewTrip = async (e) => {
     e.preventDefault();
     try {
@@ -58,8 +69,9 @@ const NewTrip = () => {
       console.log(result);
       if (result.data.success) {
         setStatus(true);
-
+        setDriverId(result.data.driverId);
         setMessage("The trip has been created successfully");
+        getDriverInfo(result.data.driverId);
       }
     } catch (error) {
       if (!error.response.data.success) {
@@ -72,8 +84,6 @@ const NewTrip = () => {
       }
     }
   };
-
-  //
 
   // useEffect(() => {
   //   if (!isLoggedIn) {

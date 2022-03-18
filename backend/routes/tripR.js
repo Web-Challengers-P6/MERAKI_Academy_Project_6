@@ -6,6 +6,7 @@ const {
   updateTrip,
   deleteTrip,
   allTripsForTheDriver,
+  getDriverId,
 } = require("../controllers/Trip");
 const authentication = require("../middleware/authentication");
 
@@ -16,8 +17,13 @@ tripRouter.post("/createNewTrip", authentication, creatNewTrip);
 tripRouter.put("/update", updateTrip);
 tripRouter.delete("/delete", deleteTrip);
 
+//main route is /trip
+
+const driverIdRouter = express.Router();
+driverIdRouter.post("/driverId/:driverId", getDriverId);
+
 //main route is/profileRender
 const profileTripRender = express.Router();
 
 profileTripRender.get("/:userId", allTripsForTheDriver);
-module.exports = { tripRouter, profileTripRender };
+module.exports = { tripRouter, profileTripRender, driverIdRouter };
