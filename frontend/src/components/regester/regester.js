@@ -12,15 +12,10 @@ const Register = () => {
     return { isLoggedIn: state.loginReducer.isLoggedIn };
   });
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState(0);
   const [Username, setUsername] = useState("");
 
-  const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const role_id = "1";
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
 

@@ -15,35 +15,106 @@ const getAllTrip = (req, res) => {
     });
   });
 };
-
+let maxNumberOfSeats = 0;
+let userId = 0;
 const creatNewTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip} = req.body;
+  const {
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numberOfSeats,
+    passengers,
+    Datetrip,
+    Timetrip,
+  } = req.body;
   const driverId = req.token.userId;
-  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Image,Price,numbersite,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, driverId, Datetrip, Timetrip];
+  userId = driverId;
+  // seatsNumber = numberOfSeats;
+  const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Price,numberOfSeats,passengers,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
+  const data = [
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Price,
+    numberOfSeats,
+    passengers,
+    driverId,
+    Datetrip,
+    Timetrip,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
         success: false,
-        massage: "Server error",
+        massage: "Server error xxxxxxxxxxxxxxxxxxxxxxxx",
         err: err,
       });
     } else {
+      console.log(userId);
+
       res.status(200).json({
         success: true,
         massage: "Success Trip created",
         results: result,
+        driverId: userId,
       });
     }
   });
 };
+const getDriverId = (req, res) => {
+  const driverId = req.params.driverId;
+  const query = `select * from user where id =${driverId};`;
+  connection.query =
+    (query.at,
+    (err, result) => {
+      if (err) {
+        res.status(500).json({
+          success: false,
+          massage: "Server error ",
+          err: err,
+        });
+      } else {
+        console.log(userId);
+        console.log("afpaifhpaisfh[sjs[dja][dsak]pdsaj[o");
+
+        res.status(200).json({
+          success: true,
+          massage: "DriverId",
+          results: result,
+        });
+      }
+    });
+};
+if (userId > 0) {
+  getDriverId();
+}
 const updateTrip = (req, res) => {
-  const { tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip } = req.body;
+  const {
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numbersite,
+    Datetrip,
+    Timetrip,
+  } = req.body;
 
   const query = `UPDATE trip SET tripName=?,TRIPfrom=?,TRIPto=?,Price=?,numbersite=?,Datetrip=?, Timetrip=? WHERE id=?; `;
   //Image=?,
-  const data = [tripName, TRIPfrom, TRIPto, Image, Price, numbersite, Datetrip, Timetrip];
+  const data = [
+    tripName,
+    TRIPfrom,
+    TRIPto,
+    Image,
+    Price,
+    numbersite,
+    Datetrip,
+    Timetrip,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -63,6 +134,7 @@ const updateTrip = (req, res) => {
     }
   });
 };
+
 const deleteTrip = (req, res) => {
   const tripId = req.body.tripId;
   const query = `delete from trip where id=${tripId};`;
@@ -105,4 +177,6 @@ module.exports = {
   updateTrip,
   deleteTrip,
   allTripsForTheDriver,
+  maxNumberOfSeats,
+  getDriverId,
 };

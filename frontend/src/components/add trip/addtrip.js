@@ -5,6 +5,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Button, Dropdown } from "react-bootstrap";
+
 import "../add trip/addtrip.css"
 import Swal from "sweetalert2";
 
@@ -26,11 +27,22 @@ const NewTrip = () => {
   const [tripName, settripName] = useState("");
   const [TRIPfrom, setTRIPfrom] = useState("");
   const [TRIPto, setTRIPto] = useState("");
-  const [numbersite, setnumbersite] = useState();
+  const [numberOfSeats, setNumberOfSeats] = useState();
   const [Price, setPrice] = useState();
   const [Datetrip, setDatetrip] = useState("");
   const [Timetrip, setTimetrip] = useState("");
-
+  const [driverId, setDriverId] = useState();
+  const getDriverInfo = (driverId) => {
+    console.log(driverId);
+    axios
+      .post(`http://localhost:5000/trip/driverId/${driverId}`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const createNewTrip = async (e) => {
     e.preventDefault();
     try {
@@ -38,10 +50,10 @@ const NewTrip = () => {
         tripName,
         TRIPfrom,
         TRIPto,
-        numbersite,
+        numberOfSeats,
         Price,
-        Datetrip, 
-        Timetrip
+        Datetrip,
+        Timetrip,
       };
       const result = await axios.post(
         "http://localhost:5000/trip/createNewTrip",
@@ -49,10 +61,10 @@ const NewTrip = () => {
           tripName,
           TRIPfrom,
           TRIPto,
-          numbersite,
-          Price,  
-          Datetrip, 
-          Timetrip
+          numberOfSeats,
+          Price,
+          Datetrip,
+          Timetrip,
         },
         {
           headers: {
@@ -64,8 +76,9 @@ const NewTrip = () => {
       console.log(result);
       if (result.data.success) {
         setStatus(true);
-
+        setDriverId(result.data.driverId);
         setMessage("The trip has been created successfully");
+        getDriverInfo(result.data.driverId);
       }
     } catch (error) {
       if (!error.response.data.success) {
@@ -78,8 +91,6 @@ const NewTrip = () => {
       }
     }
   };
-
-  //
 
   // useEffect(() => {
   //   if (!isLoggedIn) {
@@ -118,7 +129,7 @@ const NewTrip = () => {
           placeholder="Please type here a number"
           className="form-control"
           id="formGroupExampleInput"
-          onChange={(e) => setnumbersite(e.target.value)}
+          onChange={(e) => setNumberOfSeats(e.target.value)}
         ></input>
         <br />
         <label for="inputEmail3" class="col-sm-2 col-form-label">
@@ -130,11 +141,13 @@ const NewTrip = () => {
           id="formGroupExampleInput"
           onChange={(e) => setPrice(e.target.value)}
         ></input>
-   <br />
+
+        <br />
 
 
    <label for="inputEmail3" class="col-sm-2 col-form-label">
           Day 
+
         </label>
         <input
           placeholder="Please type here the date of the trip"
@@ -145,8 +158,10 @@ const NewTrip = () => {
         ></input>
 
         <br />
+
    <label for="inputEmail3" class="col-sm-2 col-form-label">
           Time
+
         </label>
         <input
           placeholder="Please type here the time of the trip"
@@ -155,6 +170,7 @@ const NewTrip = () => {
           type="time"
           onChange={(e) => setTimetrip(e.target.value)}
         ></input>
+
         <br/>
         <Button onClick={()=>{Swal.fire({
   position: 'top-end',
@@ -168,6 +184,7 @@ const NewTrip = () => {
       </form>
       
          
+
     </>
   );
 };

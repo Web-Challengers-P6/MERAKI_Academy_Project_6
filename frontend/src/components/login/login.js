@@ -49,7 +49,7 @@ const Login = () => {
         localStorage.setItem("User", res.data.results.id);
         localStorage.setItem("token", res.data.token);
         setStatus(true);
-        console.log(status)
+        console.log(status);
         dispatch(loginReducer(res.data.token));
       } else throw Error;
     } catch (error) {
@@ -59,13 +59,19 @@ const Login = () => {
       setMessage("Error happened while Login, please try again");
     }
   };
+  //hi
   console.log(state.isLoggedIn);
   useEffect(() => {
-    if (state.isLoggedIn) {
-      console.log(state.isLoggedIn);
+    if (token) {
+      console.log(token);
       history("/home");
-    } else{  history("/login");}
-  }, [state.isLoggedIn]);
+    } else {
+      history("/login");
+    }
+  }, []);
+  if (token) {
+    history("/home");
+  }
 
   return (
     <>

@@ -49,12 +49,16 @@ const Footer = () => {
             <div class="col-lg-4 col-md-6">
               <h5 class="h1 text-white">PickUP</h5>
               <p class="small text-muted">
+
                Developed by Meraki C4 A4 group
+
               </p>
               <p class="small text-muted mb-0">
                 &copy; Copyrights. All rights reserved.{" "}
                 <a class="text-primary" href="#">
+
                 Meraki C4 A4
+
                 </a>
               </p>
             </div>
@@ -86,10 +90,11 @@ const Footer = () => {
             </div> */}
             
             <div class="col-lg-4 col-md-6">
+
                 <div class="input-group mb-3">
                 <form ref={form} onSubmit={sendEmail}>
                   <div>
-                    
+
                   <input
                   id= "footerinputcolor"
                     class="form-control"
@@ -97,27 +102,34 @@ const Footer = () => {
                     placeholder="Please write your name"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
+
                   ></input>
                   </div>
                   <div>
+
                   <input
                   id= "footerinputcolor"
+
                     class="form-control"
                     type="text"
                     placeholder="Please write your email"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
+
                   </div>
                   <div>
                   <textarea
+
                   id="footerinputcolor"
+
                     class="form-control"
                     type="text"
                     placeholder="Please write your query"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
+
                   </div>
                 <div>
                   <button
@@ -139,6 +151,7 @@ const Footer = () => {
                   </div>
                   </form>
                 </div>
+
             </div>
           </div>
         </div>
