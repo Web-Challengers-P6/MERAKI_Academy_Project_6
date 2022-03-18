@@ -67,13 +67,11 @@ const Filter = () => {
             <div>
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>
-                  <p> Going to: {elem.TRIPto}  </p>
-                  <p>From: {elem.TRIPfrom}</p>
+                  <h5>Trip: {elem.TRIPfrom} &#8594; {elem.TRIPto}  </h5>
+                  
                 </Card.Header>
                 <Card.Body>
-                  <Card.Title>
-                    <p> Start Point: {elem.TRIPfrom}</p>
-                  </Card.Title>
+                  
                   <Card.Text>
                     <p>Number of passengers: {elem.numbersite}</p>
                     <p>Charge per passenger: {elem.Price} JD</p>
