@@ -4,12 +4,11 @@ body{
 }
 .card {
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+    box-shadow: 0 1px 15px 1px black;
 }
 
 .card {
     position: relative;
-    /* display: -ms-flexbox; */
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -19,4 +18,16 @@ body{
     background-clip: border-box;
     border: 1px solid #e5e9f2;
     border-radius: .2rem;
+}
+
+
+#login-input{
+outline: none;
+text-align: center;
+width: 100%;
+align-items: center;
+justify-content: center;
+color: black;
+background-color: azure;
+margin-left: 0;
 }
