@@ -8,6 +8,8 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import loginReducer from "../../reducers/loginReducer";
+import Swal from "sweetalert2";
+
 //===============================================================
 export const UserContext = createContext();
 const Login = () => {
@@ -72,10 +74,9 @@ const Login = () => {
           <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
             <div class="d-table-cell align-middle">
               <div class="text-center mt-4">
-                <h1 class="h2">Get started</h1>
-                <p class="lead">
-                  Start creating the best possible user experience for you
-                  customers.
+                <h1 class="h2"> Start adding trips, and join your favourite trip to many places in Jordan</h1>
+                <p class="lead">    
+                  Please sign up if you do not have an account, or Login to your account if you have one
                 </p>
               </div>
 
@@ -87,6 +88,7 @@ const Login = () => {
                         <label>Email</label>
                         <input
                           class="form-control form-control-lg"
+                          id="login-input"
                           onChange={(e) => setEmail(e.target.value)}
                           type="email"
                           name="email"
@@ -97,6 +99,7 @@ const Login = () => {
                         <label>Password</label>
                         <input
                           class="form-control form-control-lg"
+                          id="login-input"
                           onChange={(e) => setPassword(e.target.value)}
                           type="password"
                           name="password"
@@ -104,7 +107,14 @@ const Login = () => {
                         />
                       </div>
                       <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-lg btn-primary">
+                        <button onClick={()=>{Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Login Successful',
+  showConfirmButton: false,
+  timer: 1500
+})
+}} type="submit" class="btn btn-lg btn-primary">
                           Login
                         </button>
                         <br />
