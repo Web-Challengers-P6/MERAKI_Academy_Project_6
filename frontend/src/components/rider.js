@@ -28,6 +28,18 @@ function Rider() {
         console.log(err);
       });
   };
+  const accept = async (email) => {
+    
+    await axios
+      .post(`http://localhost:5000/reply`,{email})
+      .then((result) => {
+        console.log(result);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     getallrider();
@@ -49,7 +61,7 @@ function Rider() {
             >
               rejected
             </button>
-            <button onClick={() => { setemail(elem.email)
+            <button onClick={() => { accept(elem.email)
              } }>accept</button>
           </div>
         );
