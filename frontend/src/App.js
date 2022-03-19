@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar";
 import Profile from "./components/Profile";
 import NewTrip from "./components/add trip/addtrip";
 import Login from "./components/login/login";
+import Booktrip from "./components/booktrip/booktrip";
 
 
 

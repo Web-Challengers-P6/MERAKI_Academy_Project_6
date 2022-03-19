@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import axios from "axios";
 import "../components/RenderInProfile.css";
 import Modal from "react-modal";
@@ -76,19 +76,20 @@ const RenderInTheProfile = () => {
                     <p>Time of trip: {elem.Timetrip} </p>
                   </Card.Text>
                 </Card.Body>{" "}
-                <div>
-                      <button
+               
+                      <Button
                         className="homebuttons"
                         onClick={() => {
                           setModalIsOpenToTrue(elem.id);
                         }}
                       >
-                        passenger request
-                      </button>
-                    </div>
+                        Passengers requests
+                      </Button>
+                   
 
                 <Modal isOpen={modalIsOpen}>
-                      <button onClick={setModalIsOpenToFalse}>x</button>
+                      <Button onClick={setModalIsOpenToFalse}>x</Button>
+                      <br/>
                       {/* <Exmodal /> */}
                       <Rider></Rider>
                     </Modal>

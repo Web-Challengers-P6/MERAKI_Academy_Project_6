@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Card, Button } from "react-bootstrap";
+import "./rider.css"
+import Swal from "sweetalert2";
 function Rider() {
   const [rider, setrider] = useState([]);
   const [email, setemail] = useState("");
@@ -49,24 +52,47 @@ function Rider() {
     <>
       {rider.map((elem, i) => {
         return (
-          <div>
-            <p>{elem.Username} </p>
-
-            <p>{elem.email}</p>
-
-            <button
+          <div id="divmodal">
+              <Card border="primary" style={{ width: "18rem" }}>
+                <Card.Header>
+                 <h5>Request to join trip from</h5>
+                </Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                  <p><span id="modalspan">Name:</span> {elem.Username} </p>
+                  <p><span id="modalspan">Email:</span> {elem.email}</p>
+                  <p><span id="modalspan">Phone number:</span> {elem.Phone_number}</p>
+                  </Card.Text>
+                </Card.Body>
+                <div id="buttons_modal">
+                <Button onClick={() => { accept(elem.email)
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Acceptance has been sent',
+                  showConfirmButton: false,
+                  timer: 1500
+                }) 
+            } }>Accept</Button>
+                <Button id="buttons_modal2"
               onClick={() => {
                 reject(elem.id_);
               } }
             >
-              rejected
-            </button>
-            <button onClick={() => { accept(elem.email)
-             } }>accept</button>
-          </div>
-        );
-      })}
-    </>
-  );
-}
+
+            
+
+              Reject
+            </Button>
+             </div>
+              </Card>
+              <br />
+            </div>
+          );
+            })}
+            </>
+      )
+          }
+       
+
 export default Rider;

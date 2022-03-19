@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-
+import Swal from "sweetalert2";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Card, Row, Col } from "react-bootstrap";
@@ -69,7 +69,6 @@ const Filter = () => {
       })
       .catch((err) => {
         console.log(err);
-        console.log("nononononononononono");
       });
   };
   return (
@@ -128,7 +127,7 @@ const Filter = () => {
                 <Card.Body>
                   
                   <Card.Text>
-                    <p>Number of seats: {elem.numberOfSeats}</p>
+                    <p>Reserved seats: {elem.numberOfSeats}</p>
                     <p>Number of passengers: {elem.passengers}</p>
 
                     <p>Charge per passenger: {elem.Price} JD</p>
@@ -137,16 +136,33 @@ const Filter = () => {
                     <p>Time of trip: {elem.Timetrip} </p>
                   </Card.Text>
                 </Card.Body>
+
                 {elem.passengers !== elem.numberOfSeats && (
-                <button
+               
+
+                <Button
+
                   onClick={() => {
                     sendJoinRequest(elem.id);
                     update(elem.id, elem.numberOfSeats);
+                    Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Request has been sent',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
                   }}
                 >
-                  join trip
-                </button>
-                )}
+
+                
+               
+                
+
+                  Join trip
+                </Button>
+ )}
+
               </Card>
               <br />
             </div>
