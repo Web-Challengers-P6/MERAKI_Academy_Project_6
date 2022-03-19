@@ -34,16 +34,17 @@ const RenderInTheProfile = () => {
           return (
             <div id="spacing">
               <Card border="primary" style={{ width: "18rem" }}>
-                <Card.Header>
-                  <p key={index}> Going to: {elem.TRIPto}</p>
+              <Card.Header>
+                  <h5>Trip: {elem.TRIPfrom} &#8594; {elem.TRIPto}  </h5>
+                  
                 </Card.Header>
                 <Card.Body>
-                  <Card.Title>
-                    <p> Start Point: {elem.TRIPfrom}</p>
-                  </Card.Title>
+                  
                   <Card.Text>
                     <p>Number of passengers: {elem.numbersite}</p>
                     <p>Charge per passenger: {elem.Price} JD</p>
+                    <p>Date of trip: {elem.Datetrip} </p>
+                    <p>Time of trip: {elem.Timetrip} </p>
                   </Card.Text>
                 </Card.Body>{" "}
                 {/* <button>join trip</button> */}
