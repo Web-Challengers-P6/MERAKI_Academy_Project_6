@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import RenderInTheProfile from "./RenderInProfile";
+import Modal from "react-modal";
 const Profile = () => {
   const userId = localStorage.getItem("User");
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ const Profile = () => {
   const [allResult, setAllResult] = useState([]);
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+
   const getAllInformationFE = async () => {
     await axios
       .get(`http://localhost:5000/profile/${userId}`)
