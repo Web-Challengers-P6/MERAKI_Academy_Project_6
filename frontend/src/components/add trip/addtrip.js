@@ -20,19 +20,21 @@ const NewTrip = () => {
   const [tripName, settripName] = useState("");
   const [TRIPfrom, setTRIPfrom] = useState("");
   const [TRIPto, setTRIPto] = useState("");
-  const [numberOfSeats, setNumberOfSeats] = useState();
+  const [numberOfSeats, setNumberOfSeats] = useState(0);
   const [Price, setPrice] = useState();
   const [Datetrip, setDatetrip] = useState("");
   const [Timetrip, setTimetrip] = useState("");
-
+const [passengers, setpassengers] = useState(0)
   const createNewTrip = async (e) => {
     e.preventDefault();
+    
     try {
       const trip = {
         tripName,
         TRIPfrom,
         TRIPto,
         numberOfSeats,
+        passengers,
         Price,
         Datetrip,
         Timetrip,
@@ -44,6 +46,7 @@ const NewTrip = () => {
           TRIPfrom,
           TRIPto,
           numberOfSeats,
+          passengers,
           Price,
           Datetrip,
           Timetrip,
@@ -112,7 +115,7 @@ const NewTrip = () => {
           placeholder="Please type here a number"
           className="form-control"
           id="formGroupExampleInput"
-          onChange={(e) => setNumberOfSeats(e.target.value)}
+          onChange={(e) => setpassengers(e.target.value)}
         ></input>
         <br />
         <label for="inputEmail3" class="col-sm-2 col-form-label">
