@@ -100,62 +100,31 @@ const Profile = () => {
           <div className="col-md-5 border-right" id="profileinfo">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4 className="text-right">Profile Settings</h4>
+                <h3 className="text-right">Your profile</h3>
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
                   <label className="labels">Name</label>
-                  <input
-                  id = "profileinput"
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
-                    placeholder={allResult.map((elem) => {
+                  <h5>{allResult.map((elem) => {
                       return elem.Username;
-                    })}
-                  />
+                    })}</h5>
                 </div>
                 <div className="col-md-6">
                   <label className="labels">Email</label>
-                  <input
-                  id = "profileinput"
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    placeholder={allResult.map((elem) => {
+                  <h5>{allResult.map((elem) => {
                       return elem.email;
-                    })}
-                  />
+                    })}</h5>
                 </div>
               </div>
               <div className="row mt-3">
                 <div className="col-md-12">
                   <label className="labels">Mobile Number</label>
-                  <input
-                  id = "profileinput"
-                    type="tel"
-                    className="form-control"
-                    onChange={(e) => {
-                      setPhoneNumber(e.target.value);
-                    }}
-                    placeholder={allResult.map((elem) => {
+                  <h5>{allResult.map((elem) => {
                       return elem.Phone_number;
-                    })}
-                  />
+                    })}</h5>
                 </div>
               </div>
               <div className="mt-5 text-center">
-                <button
-                  className="btn btn-primary profile-button"
-                  type="button"
-                  onClick={sendInfo}
-                >
-                  Save Profile
-                </button>
               </div>
             </div>
             <RenderInTheProfile></RenderInTheProfile>
