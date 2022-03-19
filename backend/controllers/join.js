@@ -3,42 +3,28 @@
 const connection = require("../database/db");
 const db = require("../database/db");
 let maxNumberOfSeats = require("../controllers/Trip");
-let numberOfSeats = 0;
-// numberOfSeats = 0;
-const joinTripFunc = (req, res) => {
-  console.log("wwwwwwwwwwwwwwwwwwwwwwww", maxNumberOfSeats);
+
+const joinriderFunc = (req, res) => {
   const tripId = req.params.tripId;
   const riderId = req.body.riderId;
-  // if (tripId && riderId) {
-  // numberOfSeats += 1;&& numberOfSeats <= maxNumberOfSeats
-  const passengers = [];
-  passengers.push(riderId);
-  //   console.log(passengers);
-  const query = `update trip set passengers=${numberOfSeats} where id=${tripId}`;
-  // const data = [tripId, riderId];
-  connection.query(query, (err, result) => {
+  const query = `INSERT INTO rider (tripId,riderId) VALUES (?,?);`;
+  const data = [tripId, riderId];
+  connection.query(query,data, (err, result) => {
     if (err) {
       console.log(err);
       res.status(500).json({ success: false, message: "did not join" });
     } else {
-      console.log(result, passengers);
+      console.log(result);
       res.status(200).json({
         success: true,
         message: "joined successfully",
         result: result,
         tripId: tripId,
-        // seats: numbersite,
-        passengers: numberOfSeats,
-        // id: id,
+        
       });
     }
   });
-  // } else {
-  // console.log("nooooooooooonoooooooooooWAYYYYYYYYYY");
-  // res
-  //   .status(500)
-  //   .json({ success: false, message: " sorry the seats are full" });
-  // }
+  
 };
 const update = (req, res) => {
   const id = req.params.id;
@@ -54,10 +40,10 @@ const update = (req, res) => {
         success: true,
         message: "joined successfully(seat is reserved)",
         result: result,
-        any: numberOfSeats,
+       
       });
     }
   });
 };
-module.exports = { joinTripFunc, update };
+module.exports = { joinriderFunc, update };
 //use something like the useState for the back end sp when the trip changes it will reset each time but when you join trip a then trip b then trip a the counter for trip a will be reassigned to 0

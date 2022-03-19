@@ -30,8 +30,10 @@ const creatNewTrip = (req, res) => {
     Timetrip,
   } = req.body;
   const driverId = req.token.userId;
-  userId = driverId;
-  // seatsNumber = numberOfSeats;
+
+
+  
+  
   const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Price,numberOfSeats,passengers,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
   const data = [
     tripName,
@@ -49,7 +51,7 @@ const creatNewTrip = (req, res) => {
     if (err) {
       res.status(500).json({
         success: false,
-        massage: "Server error xxxxxxxxxxxxxxxxxxxxxxxx",
+        massage: "Server error ",
         err: err,
       });
     } else {

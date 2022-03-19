@@ -33,13 +33,13 @@ Primary Key (id)
 );
 
 create table rider (
-id INT AUTO_INCREMENT NOT NULL,
+id_ INT AUTO_INCREMENT NOT NULL,
 riderid INT,
 tripid INT,
 softDelete INT DEFAULT 0,
 FOREIGN KEY (riderid) REFERENCES user(id),
 FOREIGN KEY (tripid) REFERENCES trip(id),
-Primary Key (id)
+Primary Key (id_)
 
 );
 

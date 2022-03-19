@@ -21,7 +21,11 @@ const Footer = () => {
       )
       .then(
         (result) => {
-          console.log(result);
+
+          
+        
+
+
         },
         (error) => {
           console.log(error.text);
