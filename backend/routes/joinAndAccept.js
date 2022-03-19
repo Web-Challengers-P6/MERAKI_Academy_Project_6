@@ -1,9 +1,9 @@
 const express = require("express");
-const { joinTripFunc, update } = require("../controllers/join");
+const { joinriderFunc, update } = require("../controllers/join");
 
 // main route is /join
 const joinRouter = express.Router();
-joinRouter.post("/:tripId", joinTripFunc);
+joinRouter.post("/:tripId", joinriderFunc);
 joinRouter.put("/update/:id", update);
 
 module.exports = { joinRouter };
