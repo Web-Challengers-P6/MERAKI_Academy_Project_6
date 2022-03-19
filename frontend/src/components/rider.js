@@ -31,6 +31,18 @@ function Rider() {
         console.log(err);
       });
   };
+  const accept = async (email) => {
+    
+    await axios
+      .post(`http://localhost:5000/reply`,{email})
+      .then((result) => {
+        console.log(result);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     getallrider();
@@ -53,7 +65,7 @@ function Rider() {
                   </Card.Text>
                 </Card.Body>
                 <div id="buttons_modal">
-                <Button onClick={() => { setemail(elem.email)
+                <Button onClick={() => { accept(elem.email)
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
@@ -67,6 +79,9 @@ function Rider() {
                 reject(elem.id_);
               } }
             >
+
+            
+
               Reject
             </Button>
              </div>
@@ -79,4 +94,5 @@ function Rider() {
       )
           }
        
+
 export default Rider;
