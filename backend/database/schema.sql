@@ -6,7 +6,7 @@ USE  PROJECT6;
 create table user (
 id INT AUTO_INCREMENT NOT NULL,
 Username VARchar (255) UNIQUE,
-Phone_number INT,
+Phone_number VARchar (255) UNIQUE,
 email VARchar (255) UNIQUE,
 Password VARchar (255),
 profileImg VARCHAR(255),
