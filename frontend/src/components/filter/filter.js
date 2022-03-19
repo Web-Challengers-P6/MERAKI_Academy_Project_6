@@ -137,6 +137,7 @@ const Filter = () => {
                     <p>Time of trip: {elem.Timetrip} </p>
                   </Card.Text>
                 </Card.Body>
+                {elem.passengers !== elem.numberOfSeats && (
                 <button
                   onClick={() => {
                     sendJoinRequest(elem.id);
@@ -145,6 +146,7 @@ const Filter = () => {
                 >
                   join trip
                 </button>
+                )}
               </Card>
               <br />
             </div>
