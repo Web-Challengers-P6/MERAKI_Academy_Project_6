@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import axios from "axios";
 import "../components/RenderInProfile.css";
+import Modal from "react-modal";
+import Rider from "./rider";
 const RenderInTheProfile = () => {
   const [ownTrips, setOwnTrips] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
 
   const renderOwnTrips = async () => {
     const userId = localStorage.getItem("User");
@@ -20,6 +24,9 @@ const RenderInTheProfile = () => {
   useEffect(() => {
     renderOwnTrips();
   }, []);
+  const setModalIsOpenToFalse = () => {
+    setModalIsOpen(false);
+  };
   const rejectRider = (tripId, seats) => {
     seats -= 1;
     axios
@@ -35,6 +42,10 @@ const RenderInTheProfile = () => {
   //what is left is to return the result using HOF
   const rejectAndHide = (tripId) => {
     axios.put(`http://localhost:5000/reject/${tripId}`);
+  };
+  const setModalIsOpenToTrue = (id) => {
+    setModalIsOpen(true);
+    const prdctId = localStorage.setItem("id", id);
   };
   return (
     <>
@@ -66,14 +77,22 @@ const RenderInTheProfile = () => {
                     <p>Charge per passenger: {elem.Price} JD</p>
                   </Card.Text>
                 </Card.Body>{" "}
-                <button>Accept</button>
-                <button
-                  onClick={() => {
-                    rejectRider(elem.id);
-                  }}
-                >
-                  Reject
-                </button>
+                <div>
+                      <button
+                        className="homebuttons"
+                        onClick={() => {
+                          setModalIsOpenToTrue(elem.id);
+                        }}
+                      >
+                        passenger request
+                      </button>
+                    </div>
+
+                <Modal isOpen={modalIsOpen}>
+                      <button onClick={setModalIsOpenToFalse}>x</button>
+                      {/* <Exmodal /> */}
+                      <Rider></Rider>
+                    </Modal>
               </Card>
               <br />
             </div>
