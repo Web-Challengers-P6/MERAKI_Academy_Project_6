@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const Rider = () => {
+function Rider() {
   const [rider, setrider] = useState([]);
+  const [email, setemail] = useState("");
   const tripId = localStorage.getItem("id");
   const getallrider = async () => {
     console.log(tripId);
@@ -18,7 +19,7 @@ const Rider = () => {
   const reject = async (id) => {
     console.log({ riderid: id });
     await axios
-      .put(`http://localhost:5000/rider`, { id })
+      .put(`http://localhost:5000/rider/${id}`)
       .then((result) => {
         console.log(result);
         getallrider();
@@ -40,17 +41,20 @@ const Rider = () => {
             <p>{elem.Username} </p>
 
             <p>{elem.email}</p>
+
             <button
               onClick={() => {
-                reject(elem.id);
-              }}
+                reject(elem.id_);
+              } }
             >
               rejected
             </button>
+            <button onClick={() => { setemail(elem.email)
+             } }>accept</button>
           </div>
         );
       })}
     </>
   );
-};
+}
 export default Rider;
