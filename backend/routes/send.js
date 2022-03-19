@@ -1,6 +1,6 @@
 const express = require("express");
 const {send}=require("../controllers/email")
 const sendrouter= express.Router();
-sendrouter.get=("/em",send)
+sendrouter.post=("/:email",send)
 module.exports = { sendrouter };
 
