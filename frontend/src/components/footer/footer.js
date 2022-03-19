@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
+
 
 const Footer = () => {
   const form = useRef();
@@ -19,8 +21,11 @@ const Footer = () => {
       )
       .then(
         (result) => {
+
           
-          console.log(result.text);
+        
+
+
         },
         (error) => {
           console.log(error.text);
@@ -48,13 +53,16 @@ const Footer = () => {
             <div class="col-lg-4 col-md-6">
               <h5 class="h1 text-white">PickUP</h5>
               <p class="small text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt.
+
+               Developed by Meraki C4 A4 group
+
               </p>
               <p class="small text-muted mb-0">
                 &copy; Copyrights. All rights reserved.{" "}
                 <a class="text-primary" href="#">
-                  merakeacademy
+
+                Meraki C4 A4
+
                 </a>
               </p>
             </div>
@@ -84,54 +92,69 @@ const Footer = () => {
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div> */}
+            
             <div class="col-lg-4 col-md-6">
 
-              <h5 class="text-white mb-3">Newsletter</h5>
-              <p class="small text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
-              <form action="#" ref={form} onSubmit={sendEmail}>
                 <div class="input-group mb-3">
+                <form ref={form} onSubmit={sendEmail}>
+                  <div>
+
                   <input
+                  id= "footerinputcolor"
                     class="form-control"
                     type="text"
                     placeholder="Please write your name"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
-                  />
+
+                  ></input>
+                  </div>
+                  <div>
+
                   <input
+                  id= "footerinputcolor"
+
                     class="form-control"
                     type="text"
                     placeholder="Please write your email"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
-                  <input
+
+                  </div>
+                  <div>
+                  <textarea
+
+                  id="footerinputcolor"
+
                     class="form-control"
                     type="text"
                     placeholder="Please write your query"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                   />
+
+                  </div>
+                <div>
                   <button
                     class="btn btn-primary"
                     id="button-addon2"
-                    type="button"
-                  >
+                    type="submit"
+                    onClick={()=>{Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Your message has been sent successfully, we will reach you soon',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+                    }}
+                  >Send
                     <i class="fas fa-paper-plane"></i>
                   </button>
+                  
+                  </div>
+                  </form>
                 </div>
-              </form>
-
-                <h5 class="text-white mb-3">Newsletter</h5>
-                <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <form action="#" ref={form} onSubmit={sendEmail}>
-                    <div class="input-group mb-3">
-
-                        <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </form>
 
             </div>
           </div>

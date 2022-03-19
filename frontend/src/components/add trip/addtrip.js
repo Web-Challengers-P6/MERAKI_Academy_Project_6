@@ -5,7 +5,14 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Button, Dropdown } from "react-bootstrap";
-import "../add trip/addtrip.css";
+
+import "../add trip/addtrip.css"
+import Swal from "sweetalert2";
+
+
+
+
+
 
 //===============================================================
 
@@ -24,7 +31,21 @@ const NewTrip = () => {
   const [Price, setPrice] = useState();
   const [Datetrip, setDatetrip] = useState("");
   const [Timetrip, setTimetrip] = useState("");
+
 const [passengers, setpassengers] = useState(0)
+
+  const [driverId, setDriverId] = useState();
+  const getDriverInfo = (driverId) => {
+    console.log(driverId);
+    axios
+      .post(`http://localhost:5000/trip/driverId/${driverId}`)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const createNewTrip = async (e) => {
     e.preventDefault();
     
@@ -61,8 +82,9 @@ const [passengers, setpassengers] = useState(0)
       console.log(result);
       if (result.data.success) {
         setStatus(true);
-
+        setDriverId(result.data.driverId);
         setMessage("The trip has been created successfully");
+        getDriverInfo(result.data.driverId);
       }
     } catch (error) {
       if (!error.response.data.success) {
@@ -75,8 +97,6 @@ const [passengers, setpassengers] = useState(0)
       }
     }
   };
-
-  //
 
   // useEffect(() => {
   //   if (!isLoggedIn) {
@@ -130,8 +150,10 @@ const [passengers, setpassengers] = useState(0)
 
         <br />
 
-        <label for="inputEmail3" class="col-sm-2 col-form-label">
-          Day (Day/month) example : 18/3
+
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Day 
+
         </label>
         <input
           placeholder="Please type here the date of the trip"
@@ -142,8 +164,10 @@ const [passengers, setpassengers] = useState(0)
         ></input>
 
         <br />
-        <label for="inputEmail3" class="col-sm-2 col-form-label">
-          Time (Hour:Minute AM or PM) example: 3:30 PM
+
+   <label for="inputEmail3" class="col-sm-2 col-form-label">
+          Time
+
         </label>
         <input
           placeholder="Please type here the time of the trip"
@@ -152,23 +176,21 @@ const [passengers, setpassengers] = useState(0)
           type="time"
           onChange={(e) => setTimetrip(e.target.value)}
         ></input>
-        <br />
-        <Button type="submit" variant="primary">
-          Create New Trip
-        </Button>
+
+        <br/>
+        <Button onClick={()=>{Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Trip created successfully',
+  showConfirmButton: false,
+  timer: 1500
+})
+}} type = "submit" variant="primary">Create New Trip</Button>
+        
       </form>
-      {status
-        ? message && (
-            <div className="SuccessMessage">
-              {message} && <p>{console.log(status)}</p>
-            </div>
-          )
-        : message && (
-            <div className="ErrorMessage">
-              {message}
-              <p>{console.log(status)}</p>
-            </div>
-          )}
+      
+         
+
     </>
   );
 };

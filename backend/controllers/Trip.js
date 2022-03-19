@@ -16,6 +16,7 @@ const getAllTrip = (req, res) => {
   });
 };
 let maxNumberOfSeats = 0;
+let userId = 0;
 const creatNewTrip = (req, res) => {
   const {
     tripName,
@@ -30,6 +31,9 @@ const creatNewTrip = (req, res) => {
   } = req.body;
   const driverId = req.token.userId;
 
+
+  
+  
   const query = `INSERT INTO trip (tripName,TRIPfrom,TRIPto,Price,numberOfSeats,passengers,driverId,Datetrip,Timetrip) VALUES (?,?,?,?,?,?,?,?,?);`;
   const data = [
     tripName,
@@ -51,14 +55,44 @@ const creatNewTrip = (req, res) => {
         err: err,
       });
     } else {
+      console.log(userId);
+
       res.status(200).json({
         success: true,
         massage: "Success Trip created",
         results: result,
+        driverId: userId,
       });
     }
   });
 };
+const getDriverId = (req, res) => {
+  const driverId = req.params.driverId;
+  const query = `select * from user where id =${driverId};`;
+  connection.query =
+    (query.at,
+    (err, result) => {
+      if (err) {
+        res.status(500).json({
+          success: false,
+          massage: "Server error ",
+          err: err,
+        });
+      } else {
+        console.log(userId);
+        console.log("afpaifhpaisfh[sjs[dja][dsak]pdsaj[o");
+
+        res.status(200).json({
+          success: true,
+          massage: "DriverId",
+          results: result,
+        });
+      }
+    });
+};
+if (userId > 0) {
+  getDriverId();
+}
 const updateTrip = (req, res) => {
   const {
     tripName,
@@ -102,6 +136,7 @@ const updateTrip = (req, res) => {
     }
   });
 };
+
 const deleteTrip = (req, res) => {
   const tripId = req.body.tripId;
   const query = `delete from trip where id=${tripId};`;
@@ -145,4 +180,5 @@ module.exports = {
   deleteTrip,
   allTripsForTheDriver,
   maxNumberOfSeats,
+  getDriverId,
 };

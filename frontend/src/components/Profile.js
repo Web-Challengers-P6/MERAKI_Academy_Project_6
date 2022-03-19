@@ -69,14 +69,15 @@ const Profile = () => {
   }, []);
   return (
     <div>
-      <div className="container rounded bg-white mt-5 mb-5">
+
         <div className="row">
           <div className="col-md-3 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5" id="profilename">
               <img
                 className="rounded-circle mt-5"
                 width="250px"
                 height="250px"
+                id="imageprofile"
                 src={url}
               />
 
@@ -98,68 +99,40 @@ const Profile = () => {
               <span> </span>
             </div>
           </div>
-          <div className="col-md-5 border-right">
+          <div className="col-md-5 border-right" id="profileinfo">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4 className="text-right">Profile Settings</h4>
+                <h3 className="text-right">Your profile</h3>
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
                   <label className="labels">Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
-                    placeholder={allResult.map((elem) => {
+                  <h5>{allResult.map((elem) => {
                       return elem.Username;
-                    })}
-                  />
+                    })}</h5>
                 </div>
                 <div className="col-md-6">
                   <label className="labels">Email</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    placeholder={allResult.map((elem) => {
+                  <h5>{allResult.map((elem) => {
                       return elem.email;
-                    })}
-                  />
+                    })}</h5>
                 </div>
               </div>
               <div className="row mt-3">
                 <div className="col-md-12">
                   <label className="labels">Mobile Number</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setPhoneNumber(e.target.value);
-                    }}
-                    placeholder={allResult.map((elem) => {
+                  <h5>{allResult.map((elem) => {
                       return elem.Phone_number;
-                    })}
-                  />
+                    })}</h5>
                 </div>
               </div>
               <div className="mt-5 text-center">
-                <button
-                  className="btn btn-primary profile-button"
-                  type="button"
-                  onClick={sendInfo}
-                >
-                  Save Profile
-                </button>
               </div>
             </div>
             <RenderInTheProfile></RenderInTheProfile>
           </div>
         </div>
-      </div>
+      
       {/* <button onClick={getAllInformationFE}>getAllInformation</button> */}
     </div>
   );

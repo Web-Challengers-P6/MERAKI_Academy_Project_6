@@ -30,11 +30,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/trips" element={<Filter />} />
 
-
         <Route path="/Register" element={<Register />} />
-        
-
-       
 
       </Routes>{" "}
       <Footer />

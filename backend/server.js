@@ -20,7 +20,11 @@ const PORT = 5000;
 const { profileRouter } = require("./routes/profileR");
 const { fromAndToFilterRouter } = require("./routes/fromAndtoR");
 const { searchRouter } = require("./routes/searchR");
-const { tripRouter, profileTripRender } = require("./routes/tripR");
+const {
+  tripRouter,
+  profileTripRender,
+  driverIdRouter,
+} = require("./routes/tripR");
 const { joinRouter } = require("./routes/joinAndAccept");
 const { rejectRouter } = require("./routes/rejectR");
 const { riderRouter } = require("./routes/rider");
@@ -34,7 +38,12 @@ app.use("/trip", tripRouter);
 app.use("/profileRender", profileTripRender);
 app.use("/join", joinRouter);
 app.use("/reject", rejectRouter);
+
 app.use("/rider", riderRouter);
+
+app.use("trip", driverIdRouter);
+
+
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
 });

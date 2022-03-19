@@ -49,32 +49,31 @@ const RenderInTheProfile = () => {
   };
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
+      
       <div id="MyTrips">
         <h4>My trips</h4>
       </div>
 
-      <div className="gridcontainer">
+      <div className="gridcontainer"
+      id="profilegrid">
         {ownTrips.map((elem, index) => {
           return (
             <div id="spacing">
               <Card border="primary" style={{ width: "18rem" }}>
-                <Card.Header>
-                  <p key={index}> Going to: {elem.TRIPto}</p>
+              <Card.Header>
+                  <h5>Trip: {elem.TRIPfrom} &#8594; {elem.TRIPto}  </h5>
+                  
                 </Card.Header>
                 <Card.Body>
-                  <Card.Title>
-                    <p> Start Point: {elem.TRIPfrom}</p>
-                  </Card.Title>
+                  
                   <Card.Text>
                     <p>Number of seats: {elem.numberOfSeats}</p>
 
                     <p>Number of passengers: {elem.passengers}</p>
 
                     <p>Charge per passenger: {elem.Price} JD</p>
+                    <p>Date of trip: {elem.Datetrip} </p>
+                    <p>Time of trip: {elem.Timetrip} </p>
                   </Card.Text>
                 </Card.Body>{" "}
                 <div>
