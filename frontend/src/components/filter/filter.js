@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
 
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,19 +37,21 @@ const Filter = () => {
   const riderId = localStorage.getItem("User");
   // const tripId = localStorage.setItem("tripId", tripId);
 
-  const sendJoinRequest = (tripId) => {
+  const sendJoinRequest = (id) => {
+    console.log({"id":id})
+    console.log({"riderId":riderId});
     console.log("it is working");
     axios
-      .post(`http://localhost:5000/join/${tripId}`, {
+      .post(`http://localhost:5000/join/${id}`, {
         riderId,
       })
       .then((result) => {
         console.log(result);
-        console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        console.log("add rider");
       })
       .catch((err) => {
         console.log(err);
-        console.log("nononononononononono");
+        console.log("no rider");
       });
   };
 
@@ -60,7 +63,8 @@ const Filter = () => {
       })
       .then((result) => {
         console.log(result);
-        console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        console.log(seats)
+        console.log("add seat");
         filteredTrips();
       })
       .catch((err) => {
@@ -68,19 +72,19 @@ const Filter = () => {
         console.log("nononononononononono");
       });
   };
-  // const seatsNumber = (id, seat) => {
-  //   setSeats(seat + 1);
-  //   console.log(seat);
-  //   update(id);
-  // };
-  const inc = () => {};
   return (
     <>
-    <div id="paragraphfilter">
-    <h5>Please add location you want a ride from, and destination you are going to, in the inputs below and click search.</h5>
-    <br/>
-    <h5>All trips that match your search will appear, choose the one you prefer to book with.</h5>
-    </div>
+      <div id="paragraphfilter">
+        <h5>
+          Please add location you want a ride from, and destination you are
+          going to, in the inputs below and click search.
+        </h5>
+        <br />
+        <h5>
+          All trips that match your search will appear, choose the one you
+          prefer to book with.
+        </h5>
+      </div>
       <form onSubmit={filteredTrips}>
         <br />
         <label for="inputEmail3" class="col-sm-2 col-form-label">
@@ -114,7 +118,7 @@ const Filter = () => {
             <div key={index}>
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>
-                  <p> Going to: {elem.TRIPto}  </p>
+                  <p> Going to: {elem.TRIPto} </p>
                   <p>From: {elem.TRIPfrom}</p>
                 </Card.Header>
                 <Card.Body>
@@ -129,16 +133,12 @@ const Filter = () => {
 
                     <p>Date of trip: {elem.Datetrip} </p>
                     <p>Time of trip: {elem.Timetrip} </p>
-
                   </Card.Text>
                 </Card.Body>
                 <button
                   onClick={() => {
                     sendJoinRequest(elem.id);
-                    // seatsNumber(elem.id, elem.numbersite);
-                    // setSeats(elem.numbersite + 1);
-                    update(elem.id, elem.numbersite);
-                    // filteredTrips();
+                    update(elem.id, elem.numberOfSeats);
                   }}
                 >
                   join trip
