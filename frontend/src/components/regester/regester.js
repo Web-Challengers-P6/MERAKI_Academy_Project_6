@@ -18,6 +18,7 @@ const Register = () => {
   const [Password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(false);
+  const [Phone_number, setPhone_number] = useState("");
 
   // =================================================================
 
@@ -28,6 +29,7 @@ const Register = () => {
         Username,
         email,
         Password,
+        Phone_number
       });
       console.log(result);
       if (result.data.success) {
@@ -72,6 +74,17 @@ const Register = () => {
                           type="text"
                           name="name"
                           placeholder="Enter your name"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Phone number</label>
+                        <input
+                          class="form-control form-control-lg"
+                          id = "signupinput"
+                          onChange={(e) => setPhone_number(e.target.value)}
+                          type="text"
+                          name="name"
+                          placeholder="Enter your phone number"
                         />
                       </div>
                       <div class="form-group">
