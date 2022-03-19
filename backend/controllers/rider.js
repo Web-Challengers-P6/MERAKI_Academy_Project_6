@@ -3,7 +3,7 @@ const connection = require("../database/db");
 
 const getAllRider=(req,res)=>{
     const tripId=req.params.tripId
-    const query=`select* FROM rider inner join user ON rider.riderid =user.id where rider.tripid=? and rider.softDelete=0 `;
+    const query=`select* FROM rider inner join user ON riderid =user.id where rider.tripid=? and rider.softDelete=0 `;
     const data =[tripId]
     connection.query(query, data, (err, result) => {
         if (err) {
@@ -23,8 +23,8 @@ const getAllRider=(req,res)=>{
     
 }
 const softDelete=(req,res)=>{
-  const id=req.body.id
-  const query=`UPDATE rider SET softDelete=? where id=? `;
+  const id=req.params.id
+  const query=`UPDATE rider SET softDelete=1 where id_=? `;
   const data =[id]
   connection.query(query, data, (err, result) => {
       if (err) {
