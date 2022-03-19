@@ -24,7 +24,9 @@ const { tripRouter, profileTripRender } = require("./routes/tripR");
 const { joinRouter } = require("./routes/joinAndAccept");
 const { rejectRouter } = require("./routes/rejectR");
 const { riderRouter } = require("./routes/rider");
+const { sendrouter } = require("./routes/send");
 //Routes Middleware
+app.use("/send", sendrouter);
 app.use("/profile", profileRouter);
 app.use("/search", searchRouter);
 app.use("/filter", fromAndToFilterRouter);
@@ -32,7 +34,7 @@ app.use("/trip", tripRouter);
 app.use("/profileRender", profileTripRender);
 app.use("/join", joinRouter);
 app.use("/reject", rejectRouter);
-app.use("/rider",riderRouter)
+app.use("/rider", riderRouter);
 app.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
 });
